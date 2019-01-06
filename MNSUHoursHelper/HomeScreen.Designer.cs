@@ -34,6 +34,7 @@
             this.passwordLabel = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
+            this.debugCredent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // usernameLabel
@@ -101,11 +102,22 @@
             this.settingsButton.UseVisualStyleBackColor = true;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
+            // debugCredent
+            // 
+            this.debugCredent.Location = new System.Drawing.Point(348, 150);
+            this.debugCredent.Name = "debugCredent";
+            this.debugCredent.Size = new System.Drawing.Size(75, 23);
+            this.debugCredent.TabIndex = 6;
+            this.debugCredent.Text = "Add Info";
+            this.debugCredent.UseVisualStyleBackColor = true;
+            this.debugCredent.Click += new System.EventHandler(this.debugCredent_Click);
+            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(435, 215);
+            this.Controls.Add(this.debugCredent);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.passwordTextBox);
@@ -127,6 +139,7 @@
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Button debugCredent;
     }
 }
 

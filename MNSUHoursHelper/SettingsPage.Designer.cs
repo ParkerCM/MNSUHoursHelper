@@ -29,18 +29,21 @@
         private void InitializeComponent()
         {
             this.payPeriodLabel = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.day1Checkbox = new System.Windows.Forms.CheckBox();
+            this.day2Checkbox = new System.Windows.Forms.CheckBox();
+            this.day3Checkbox = new System.Windows.Forms.CheckBox();
+            this.day4Checkbox = new System.Windows.Forms.CheckBox();
+            this.day5Checkbox = new System.Windows.Forms.CheckBox();
+            this.day6Checkbox = new System.Windows.Forms.CheckBox();
+            this.day7Checkbox = new System.Windows.Forms.CheckBox();
+            this.day8Checkbox = new System.Windows.Forms.CheckBox();
+            this.day9Checkbox = new System.Windows.Forms.CheckBox();
+            this.day10Checkbox = new System.Windows.Forms.CheckBox();
             this.calendarWidget = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.fullTimeCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // payPeriodLabel
@@ -52,150 +55,204 @@
             this.payPeriodLabel.TabIndex = 2;
             this.payPeriodLabel.Text = "null";
             // 
-            // checkBox1
+            // day1Checkbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(15, 35);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(83, 17);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Wednesday";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.day1Checkbox.AutoSize = true;
+            this.day1Checkbox.Checked = true;
+            this.day1Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day1Checkbox.Location = new System.Drawing.Point(15, 72);
+            this.day1Checkbox.Name = "day1Checkbox";
+            this.day1Checkbox.Size = new System.Drawing.Size(83, 17);
+            this.day1Checkbox.TabIndex = 3;
+            this.day1Checkbox.Text = "Wednesday";
+            this.day1Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // day2Checkbox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(15, 58);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(70, 17);
-            this.checkBox2.TabIndex = 4;
-            this.checkBox2.Text = "Thursday";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.day2Checkbox.AutoSize = true;
+            this.day2Checkbox.Checked = true;
+            this.day2Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day2Checkbox.Location = new System.Drawing.Point(15, 95);
+            this.day2Checkbox.Name = "day2Checkbox";
+            this.day2Checkbox.Size = new System.Drawing.Size(70, 17);
+            this.day2Checkbox.TabIndex = 4;
+            this.day2Checkbox.Text = "Thursday";
+            this.day2Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // day3Checkbox
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(15, 81);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(54, 17);
-            this.checkBox3.TabIndex = 5;
-            this.checkBox3.Text = "Friday";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.day3Checkbox.AutoSize = true;
+            this.day3Checkbox.Checked = true;
+            this.day3Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day3Checkbox.Location = new System.Drawing.Point(15, 118);
+            this.day3Checkbox.Name = "day3Checkbox";
+            this.day3Checkbox.Size = new System.Drawing.Size(54, 17);
+            this.day3Checkbox.TabIndex = 5;
+            this.day3Checkbox.Text = "Friday";
+            this.day3Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // day4Checkbox
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(15, 127);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(64, 17);
-            this.checkBox4.TabIndex = 6;
-            this.checkBox4.Text = "Monday";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.day4Checkbox.AutoSize = true;
+            this.day4Checkbox.Checked = true;
+            this.day4Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day4Checkbox.Location = new System.Drawing.Point(15, 164);
+            this.day4Checkbox.Name = "day4Checkbox";
+            this.day4Checkbox.Size = new System.Drawing.Size(64, 17);
+            this.day4Checkbox.TabIndex = 6;
+            this.day4Checkbox.Text = "Monday";
+            this.day4Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // day5Checkbox
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(15, 150);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(67, 17);
-            this.checkBox5.TabIndex = 7;
-            this.checkBox5.Text = "Tuesday";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.day5Checkbox.AutoSize = true;
+            this.day5Checkbox.Checked = true;
+            this.day5Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day5Checkbox.Location = new System.Drawing.Point(15, 187);
+            this.day5Checkbox.Name = "day5Checkbox";
+            this.day5Checkbox.Size = new System.Drawing.Size(67, 17);
+            this.day5Checkbox.TabIndex = 7;
+            this.day5Checkbox.Text = "Tuesday";
+            this.day5Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // day6Checkbox
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(15, 173);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(83, 17);
-            this.checkBox6.TabIndex = 8;
-            this.checkBox6.Text = "Wednesday";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.day6Checkbox.AutoSize = true;
+            this.day6Checkbox.Checked = true;
+            this.day6Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day6Checkbox.Location = new System.Drawing.Point(15, 210);
+            this.day6Checkbox.Name = "day6Checkbox";
+            this.day6Checkbox.Size = new System.Drawing.Size(83, 17);
+            this.day6Checkbox.TabIndex = 8;
+            this.day6Checkbox.Text = "Wednesday";
+            this.day6Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // day7Checkbox
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(15, 196);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(70, 17);
-            this.checkBox7.TabIndex = 9;
-            this.checkBox7.Text = "Thursday";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.day7Checkbox.AutoSize = true;
+            this.day7Checkbox.Checked = true;
+            this.day7Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day7Checkbox.Location = new System.Drawing.Point(15, 233);
+            this.day7Checkbox.Name = "day7Checkbox";
+            this.day7Checkbox.Size = new System.Drawing.Size(70, 17);
+            this.day7Checkbox.TabIndex = 9;
+            this.day7Checkbox.Text = "Thursday";
+            this.day7Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // day8Checkbox
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(15, 219);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(54, 17);
-            this.checkBox8.TabIndex = 10;
-            this.checkBox8.Text = "Friday";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.day8Checkbox.AutoSize = true;
+            this.day8Checkbox.Checked = true;
+            this.day8Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day8Checkbox.Location = new System.Drawing.Point(15, 256);
+            this.day8Checkbox.Name = "day8Checkbox";
+            this.day8Checkbox.Size = new System.Drawing.Size(54, 17);
+            this.day8Checkbox.TabIndex = 10;
+            this.day8Checkbox.Text = "Friday";
+            this.day8Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox9
+            // day9Checkbox
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(15, 265);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(64, 17);
-            this.checkBox9.TabIndex = 11;
-            this.checkBox9.Text = "Monday";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.day9Checkbox.AutoSize = true;
+            this.day9Checkbox.Checked = true;
+            this.day9Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day9Checkbox.Location = new System.Drawing.Point(15, 302);
+            this.day9Checkbox.Name = "day9Checkbox";
+            this.day9Checkbox.Size = new System.Drawing.Size(64, 17);
+            this.day9Checkbox.TabIndex = 11;
+            this.day9Checkbox.Text = "Monday";
+            this.day9Checkbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox10
+            // day10Checkbox
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(15, 288);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(67, 17);
-            this.checkBox10.TabIndex = 12;
-            this.checkBox10.Text = "Tuesday";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.day10Checkbox.AutoSize = true;
+            this.day10Checkbox.Checked = true;
+            this.day10Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day10Checkbox.Location = new System.Drawing.Point(15, 325);
+            this.day10Checkbox.Name = "day10Checkbox";
+            this.day10Checkbox.Size = new System.Drawing.Size(67, 17);
+            this.day10Checkbox.TabIndex = 12;
+            this.day10Checkbox.Text = "Tuesday";
+            this.day10Checkbox.UseVisualStyleBackColor = true;
             // 
             // calendarWidget
             // 
             this.calendarWidget.AnnuallyBoldedDates = new System.DateTime[] {
         new System.DateTime(2019, 1, 14, 0, 0, 0, 0),
         new System.DateTime(2019, 7, 4, 0, 0, 0, 0),
-        new System.DateTime(2019, 12, 25, 0, 0, 0, 0)};
+        new System.DateTime(2019, 12, 25, 0, 0, 0, 0),
+        new System.DateTime(2019, 1, 1, 0, 0, 0, 0)};
             this.calendarWidget.BackColor = System.Drawing.SystemColors.Window;
-            this.calendarWidget.Location = new System.Drawing.Point(159, 93);
+            this.calendarWidget.CalendarDimensions = new System.Drawing.Size(1, 2);
+            this.calendarWidget.Location = new System.Drawing.Point(149, 38);
             this.calendarWidget.MaxSelectionCount = 14;
             this.calendarWidget.Name = "calendarWidget";
-            this.calendarWidget.SelectionRange = new System.Windows.Forms.SelectionRange(new System.DateTime(2019, 1, 16, 0, 0, 0, 0), new System.DateTime(2019, 1, 22, 0, 0, 0, 0));
-            this.calendarWidget.ShowToday = false;
             this.calendarWidget.ShowTodayCircle = false;
             this.calendarWidget.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(182, 264);
+            this.label1.Location = new System.Drawing.Point(162, 358);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 13);
             this.label1.TabIndex = 14;
             this.label1.Text = "Bold dates represet a company holiday";
             // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(100, 402);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 15;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(249, 402);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 16;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // fullTimeCheckbox
+            // 
+            this.fullTimeCheckbox.AutoSize = true;
+            this.fullTimeCheckbox.Location = new System.Drawing.Point(15, 38);
+            this.fullTimeCheckbox.Name = "fullTimeCheckbox";
+            this.fullTimeCheckbox.Size = new System.Drawing.Size(64, 17);
+            this.fullTimeCheckbox.TabIndex = 17;
+            this.fullTimeCheckbox.Text = "Full time";
+            this.fullTimeCheckbox.UseVisualStyleBackColor = true;
+            // 
             // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(443, 451);
+            this.Controls.Add(this.fullTimeCheckbox);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.calendarWidget);
-            this.Controls.Add(this.checkBox10);
-            this.Controls.Add(this.checkBox9);
-            this.Controls.Add(this.checkBox8);
-            this.Controls.Add(this.checkBox7);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.day10Checkbox);
+            this.Controls.Add(this.day9Checkbox);
+            this.Controls.Add(this.day8Checkbox);
+            this.Controls.Add(this.day7Checkbox);
+            this.Controls.Add(this.day6Checkbox);
+            this.Controls.Add(this.day5Checkbox);
+            this.Controls.Add(this.day4Checkbox);
+            this.Controls.Add(this.day3Checkbox);
+            this.Controls.Add(this.day2Checkbox);
+            this.Controls.Add(this.day1Checkbox);
             this.Controls.Add(this.payPeriodLabel);
             this.Name = "SettingsPage";
             this.Text = "SettingsPage";
+            this.Load += new System.EventHandler(this.SettingsPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,17 +260,20 @@
 
         #endregion
         private System.Windows.Forms.Label payPeriodLabel;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox day1Checkbox;
+        private System.Windows.Forms.CheckBox day2Checkbox;
+        private System.Windows.Forms.CheckBox day3Checkbox;
+        private System.Windows.Forms.CheckBox day4Checkbox;
+        private System.Windows.Forms.CheckBox day5Checkbox;
+        private System.Windows.Forms.CheckBox day6Checkbox;
+        private System.Windows.Forms.CheckBox day7Checkbox;
+        private System.Windows.Forms.CheckBox day8Checkbox;
+        private System.Windows.Forms.CheckBox day9Checkbox;
+        private System.Windows.Forms.CheckBox day10Checkbox;
         private System.Windows.Forms.MonthCalendar calendarWidget;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.CheckBox fullTimeCheckbox;
     }
 }
