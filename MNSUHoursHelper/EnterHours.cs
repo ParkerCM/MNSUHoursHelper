@@ -37,6 +37,13 @@ namespace MNSUHoursHelper
         private readonly String saveTime = "//*[@id='timeSaveOrAddId']";
         private readonly String continueOnHolidayAlert = "//*[@id='continueId']";
 
+        /// <summary>
+        /// Create webdriver and navigate to eservices. Collect user settings and store them
+        /// </summary>
+        /// <param name="username">StarID for user</param>
+        /// <param name="password">Password for user</param>
+        /// <param name="daysWorked">Dictionary of the days they worked this pay period</param>
+        /// <param name="fullTime">Did they work 8 hours?</param>
         public EnterHours(String username, String password, Dictionary<int, bool> daysWorked, bool fullTime)
         {
             this.username = username;
@@ -57,11 +64,18 @@ namespace MNSUHoursHelper
             this.Main();
         }
 
+        /// <summary>
+        /// Calls methods in correct order. Used after the constructor
+        /// </summary>
         private void Main()
         {
-            this.LogIn();
+            LogIn();
+            AddHours();
         }
 
+        /// <summary>
+        /// Logs in to eservices with the provided username and password
+        /// </summary>
         public void LogIn()
         {
             var username = Driver.FindElement(By.XPath(usernameField));
@@ -77,6 +91,7 @@ namespace MNSUHoursHelper
 
             try
             {
+                // If credentials did not work close browser
                 Driver.FindElement(By.XPath(logInErrorMessage));
                 Driver.Dispose();
             }
@@ -90,13 +105,16 @@ namespace MNSUHoursHelper
                 {
                     Driver.FindElement(By.XPath(estimatedBillContinue)).Click();
                 }
-                finally
+                catch (NoSuchElementException)
                 {
-                    this.AddHours();
+                    return;
                 }
             }
         }
 
+        /// <summary>
+        /// Adds hours into eservices based on the days worked and whether the user is fulltime
+        /// </summary>
         private void AddHours()
         {
             Driver.FindElement(By.XPath(studentEmploymentLink)).Click();

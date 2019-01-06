@@ -17,45 +17,35 @@ namespace MNSUHoursHelper
         private Dictionary<int, bool> daysSelected = new Dictionary<int, bool>();
         private CheckBox[] daysCheckBoxes = new CheckBox[10];
 
-        public SettingsPage(Dictionary<int, bool> daysWorked)
+        public Dictionary<int, bool> DaysSelected
         {
-            this.daysSelected = daysWorked;
-            
+            get { return daysSelected; }
+            set { daysSelected = value; }
+        }
+
+        public bool FullTime
+        {
+            get { return fullTimeCheckbox.Checked; }
+            set { fullTimeCheckbox.Checked = value; }
+        }
+
+        public SettingsPage(Dictionary<int, bool> daysWorked, bool fullTime)
+        {
             InitializeComponent();
-            SetUpCheckboxArray();
-            CheckUncheckBoxes();
+
+            DaysSelected = daysWorked;
+            FullTime = fullTime;
+            
+            daysCheckBoxes = SetUpCheckboxArray(daysCheckBoxes);
+            CheckUncheckBoxes(daysCheckBoxes, daysSelected);
             SetCurrentPayPeriod();
-            AddDateToCheckboxes();
+            AddDateToCheckboxes(daysCheckBoxes, startOfPayPeriod);
         }
 
-        private void CheckUncheckBoxes()
-        {
-            int altIndex;
-
-            for (int index = 0; index < daysCheckBoxes.Length; index++)
-            {
-                altIndex = index;
-                
-                if (index >= 8)
-                {
-                    altIndex = index + 4;
-                }
-                else if (index >= 3)
-                {
-                    altIndex = index + 2;
-                }
-
-                if (!daysSelected[altIndex])
-                {
-                    daysCheckBoxes[index].Checked = false;
-                }
-                else
-                {
-                    daysCheckBoxes[index].Checked = true;
-                }
-            }
-        }
-
+        /// <summary>
+        /// Determines current pay period based on the current date
+        /// Highlights the range on the calendar and adds the date range to the pay period label
+        /// </summary>
         private void SetCurrentPayPeriod()
         {
             DateTime endOfAPayPeriod = new DateTime(2018, 12, 25);
@@ -81,9 +71,96 @@ namespace MNSUHoursHelper
             calendarWidget.SelectionEnd = this.endOfPayPeriod;
         }
 
+        /*<----- Checkbox setup and formatting ----->*/
+
+        /// <summary>
+        /// Loads saved checkbox settings and applies them to the page by enabling/disabling the boxes.
+        /// Default format is where every box is checked.
+        /// </summary>
+        /// <param name="boxes"></param>
+        /// <param name="daysWorking"></param>
+        private void CheckUncheckBoxes(CheckBox[] boxes, Dictionary<int, bool> daysWorking)
+        {
+            int altIndex;
+
+            for (int index = 0; index < boxes.Length; index++)
+            {
+                altIndex = index;
+
+                if (index >= 8)
+                {
+                    altIndex = index + 4;
+                }
+                else if (index >= 3)
+                {
+                    altIndex = index + 2;
+                }
+
+                if (!daysWorking[altIndex])
+                {
+                    boxes[index].Checked = false;
+                }
+                else
+                {
+                    boxes[index].Checked = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Addes respective data in MM/DD format to the checkbox label
+        /// </summary>
+        /// <param name="boxes">Array of all day checkboxes on the page</param>
+        private void AddDateToCheckboxes(CheckBox[] boxes, DateTime payPeriod)
+        {
+            int altIndex;
+
+            for (int index = 0; index < boxes.Length; index++)
+            {
+                altIndex = index;
+                if (index >= 8)
+                {
+                    altIndex += 4;
+                }
+                else if (index >= 3)
+                {
+                    altIndex += 2;
+                }
+
+                boxes[index].Text += " " + payPeriod.AddDays(altIndex).Month.ToString() + "/" + payPeriod.AddDays(altIndex).Day.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Add checkboxes to the checkbox array
+        /// </summary>
+        /// <param name="boxes">Empty array for holding checkboxes</param>
+        /// <returns>A checkbox array with all checkboxes on the form</returns>
+        private CheckBox[] SetUpCheckboxArray(CheckBox[] boxes)
+        {
+            boxes[0] = day1Checkbox;
+            boxes[1] = day2Checkbox;
+            boxes[2] = day3Checkbox;
+            boxes[3] = day4Checkbox;
+            boxes[4] = day5Checkbox;
+            boxes[5] = day6Checkbox;
+            boxes[6] = day7Checkbox;
+            boxes[7] = day8Checkbox;
+            boxes[8] = day9Checkbox;
+            boxes[9] = day10Checkbox;
+
+            return boxes;
+        }
+
+        /*<----- Button Actions ----->*/
+
+        /// <summary>
+        /// Logic for clicking the save button. Selected days of the week are saved and sent to the home screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            //CheckBox[] daysCheckBoxes = new CheckBox[] { day1Checkbox, day2Checkbox, day3Checkbox, day4Checkbox, day5Checkbox, day6Checkbox, day7Checkbox, day8Checkbox, day9Checkbox, day10Checkbox };
             int altIndex;
 
             for (int index = 0; index < daysCheckBoxes.Length; index++)
@@ -101,65 +178,25 @@ namespace MNSUHoursHelper
 
                 if (!daysCheckBoxes[index].Checked)
                 {
-                    this.daysSelected[altIndex] = false;
+                    DaysSelected[altIndex] = false;
                 }
                 else
                 {
-                    this.daysSelected[altIndex] = true;
+                    DaysSelected[altIndex] = true;
                 }
             }
-
+            // Send back OK result so the form data can be transfered back to home screen
             DialogResult = DialogResult.OK;
         }
-
+        
+        /// <summary>
+        /// Logic for clicking cancel. Closes settings page without saving data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        public Dictionary<int, bool> GetDaysWorked
-        {
-            get { return this.daysSelected; }
-        }
-
-        public bool GetFullTime
-        {
-            get { return fullTimeCheckbox.Checked; }
-        }
-
-        private void AddDateToCheckboxes()
-        {
-            //CheckBox[] daysCheckBoxes = new CheckBox[] { day1Checkbox, day2Checkbox, day3Checkbox, day4Checkbox, day5Checkbox, day6Checkbox, day7Checkbox, day8Checkbox, day9Checkbox, day10Checkbox };
-            int altIndex;
-
-            for (int index = 0; index < daysCheckBoxes.Length; index++)
-            {
-                altIndex = index;
-                if (index >= 8)
-                {
-                    altIndex += 4;
-                }
-                else if (index >= 3)
-                {
-                    altIndex += 2;
-                }
-
-                daysCheckBoxes[index].Text += " " + startOfPayPeriod.AddDays(altIndex).Month.ToString() + "/" + startOfPayPeriod.AddDays(altIndex).Day.ToString();
-            }
-        }
-
-        private void SetUpCheckboxArray()
-        {
-            daysCheckBoxes[0] = day1Checkbox;
-            daysCheckBoxes[1] = day2Checkbox;
-            daysCheckBoxes[2] = day3Checkbox;
-            daysCheckBoxes[3] = day4Checkbox;
-            daysCheckBoxes[4] = day5Checkbox;
-            daysCheckBoxes[5] = day6Checkbox;
-            daysCheckBoxes[6] = day7Checkbox;
-            daysCheckBoxes[7] = day8Checkbox;
-            daysCheckBoxes[8] = day9Checkbox;
-            daysCheckBoxes[9] = day10Checkbox;
         }
     }
 }
