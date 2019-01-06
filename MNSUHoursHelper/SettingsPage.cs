@@ -14,29 +14,46 @@ namespace MNSUHoursHelper
     {
         private DateTime startOfPayPeriod;
         private DateTime endOfPayPeriod;
-        private Dictionary<int, bool> daysSelected = new Dictionary<int, bool>()
-        {
-            {0, true },
-            {1, true },
-            {2, true },
-            {3, false },
-            {4, false },
-            {5, true },
-            {6, true },
-            {7, true },
-            {8, true },
-            {9, true },
-            {10, false },
-            {11, false },
-            {12, true },
-            {13, true }
-        };
+        private Dictionary<int, bool> daysSelected = new Dictionary<int, bool>();
+        private CheckBox[] daysCheckBoxes = new CheckBox[10];
 
-        public SettingsPage()
+        public SettingsPage(Dictionary<int, bool> daysWorked)
         {
+            this.daysSelected = daysWorked;
+            
             InitializeComponent();
+            SetUpCheckboxArray();
+            CheckUncheckBoxes();
             SetCurrentPayPeriod();
             AddDateToCheckboxes();
+        }
+
+        private void CheckUncheckBoxes()
+        {
+            int altIndex;
+
+            for (int index = 0; index < daysCheckBoxes.Length; index++)
+            {
+                altIndex = index;
+                
+                if (index >= 8)
+                {
+                    altIndex = index + 4;
+                }
+                else if (index >= 3)
+                {
+                    altIndex = index + 2;
+                }
+
+                if (!daysSelected[altIndex])
+                {
+                    daysCheckBoxes[index].Checked = false;
+                }
+                else
+                {
+                    daysCheckBoxes[index].Checked = true;
+                }
+            }
         }
 
         private void SetCurrentPayPeriod()
@@ -66,7 +83,7 @@ namespace MNSUHoursHelper
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            CheckBox[] daysCheckBoxes = new CheckBox[] { day1Checkbox, day2Checkbox, day3Checkbox, day4Checkbox, day5Checkbox, day6Checkbox, day7Checkbox, day8Checkbox, day9Checkbox, day10Checkbox };
+            //CheckBox[] daysCheckBoxes = new CheckBox[] { day1Checkbox, day2Checkbox, day3Checkbox, day4Checkbox, day5Checkbox, day6Checkbox, day7Checkbox, day8Checkbox, day9Checkbox, day10Checkbox };
             int altIndex;
 
             for (int index = 0; index < daysCheckBoxes.Length; index++)
@@ -110,14 +127,9 @@ namespace MNSUHoursHelper
             get { return fullTimeCheckbox.Checked; }
         }
 
-        private void SettingsPage_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddDateToCheckboxes()
         {
-            CheckBox[] daysCheckBoxes = new CheckBox[] { day1Checkbox, day2Checkbox, day3Checkbox, day4Checkbox, day5Checkbox, day6Checkbox, day7Checkbox, day8Checkbox, day9Checkbox, day10Checkbox };
+            //CheckBox[] daysCheckBoxes = new CheckBox[] { day1Checkbox, day2Checkbox, day3Checkbox, day4Checkbox, day5Checkbox, day6Checkbox, day7Checkbox, day8Checkbox, day9Checkbox, day10Checkbox };
             int altIndex;
 
             for (int index = 0; index < daysCheckBoxes.Length; index++)
@@ -134,6 +146,20 @@ namespace MNSUHoursHelper
 
                 daysCheckBoxes[index].Text += " " + startOfPayPeriod.AddDays(altIndex).Month.ToString() + "/" + startOfPayPeriod.AddDays(altIndex).Day.ToString();
             }
+        }
+
+        private void SetUpCheckboxArray()
+        {
+            daysCheckBoxes[0] = day1Checkbox;
+            daysCheckBoxes[1] = day2Checkbox;
+            daysCheckBoxes[2] = day3Checkbox;
+            daysCheckBoxes[3] = day4Checkbox;
+            daysCheckBoxes[4] = day5Checkbox;
+            daysCheckBoxes[5] = day6Checkbox;
+            daysCheckBoxes[6] = day7Checkbox;
+            daysCheckBoxes[7] = day8Checkbox;
+            daysCheckBoxes[8] = day9Checkbox;
+            daysCheckBoxes[9] = day10Checkbox;
         }
     }
 }

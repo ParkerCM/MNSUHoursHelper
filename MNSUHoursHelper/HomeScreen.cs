@@ -52,9 +52,7 @@ namespace MNSUHoursHelper
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            //this.settingsPage.Show();
-
-            using (SettingsPage settingsPage = new SettingsPage())
+            using (SettingsPage settingsPage = new SettingsPage(daysWorked))
             {
                 if (settingsPage.ShowDialog() == DialogResult.OK)
                 {
