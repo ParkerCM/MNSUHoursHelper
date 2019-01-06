@@ -36,6 +36,7 @@ namespace MNSUHoursHelper
         {
             InitializeComponent();
             SetCurrentPayPeriod();
+            AddDateToCheckboxes();
         }
 
         private void SetCurrentPayPeriod()
@@ -112,6 +113,27 @@ namespace MNSUHoursHelper
         private void SettingsPage_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddDateToCheckboxes()
+        {
+            CheckBox[] daysCheckBoxes = new CheckBox[] { day1Checkbox, day2Checkbox, day3Checkbox, day4Checkbox, day5Checkbox, day6Checkbox, day7Checkbox, day8Checkbox, day9Checkbox, day10Checkbox };
+            int altIndex;
+
+            for (int index = 0; index < daysCheckBoxes.Length; index++)
+            {
+                altIndex = index;
+                if (index >= 8)
+                {
+                    altIndex += 4;
+                }
+                else if (index >= 3)
+                {
+                    altIndex += 2;
+                }
+
+                daysCheckBoxes[index].Text += " " + startOfPayPeriod.AddDays(altIndex).Month.ToString() + "/" + startOfPayPeriod.AddDays(altIndex).Day.ToString();
+            }
         }
     }
 }
