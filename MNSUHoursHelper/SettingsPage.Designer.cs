@@ -178,17 +178,22 @@
             // calendarWidget
             // 
             this.calendarWidget.AnnuallyBoldedDates = new System.DateTime[] {
-        new System.DateTime(2019, 1, 14, 0, 0, 0, 0),
+        new System.DateTime(2019, 1, 1, 0, 0, 0, 0),
+        new System.DateTime(2019, 1, 21, 0, 0, 0, 0),
+        new System.DateTime(2019, 2, 18, 0, 0, 0, 0),
+        new System.DateTime(2019, 5, 27, 0, 0, 0, 0),
         new System.DateTime(2019, 7, 4, 0, 0, 0, 0),
-        new System.DateTime(2019, 12, 25, 0, 0, 0, 0),
-        new System.DateTime(2019, 1, 1, 0, 0, 0, 0)};
-            this.calendarWidget.BackColor = System.Drawing.SystemColors.Window;
+        new System.DateTime(2019, 9, 2, 0, 0, 0, 0),
+        new System.DateTime(2019, 11, 28, 0, 0, 0, 0),
+        new System.DateTime(2019, 11, 29, 0, 0, 0, 0),
+        new System.DateTime(2019, 12, 25, 0, 0, 0, 0)};
+            this.calendarWidget.BackColor = System.Drawing.SystemColors.Control;
             this.calendarWidget.CalendarDimensions = new System.Drawing.Size(1, 2);
             this.calendarWidget.Location = new System.Drawing.Point(149, 38);
             this.calendarWidget.MaxSelectionCount = 14;
             this.calendarWidget.Name = "calendarWidget";
-            this.calendarWidget.ShowTodayCircle = false;
-            this.calendarWidget.TabIndex = 13;
+            this.calendarWidget.ShowWeekNumbers = true;
+            this.calendarWidget.TabIndex = 0;
             // 
             // label1
             // 
@@ -251,8 +256,7 @@
             this.Controls.Add(this.day1Checkbox);
             this.Controls.Add(this.payPeriodLabel);
             this.Name = "SettingsPage";
-            this.Text = "SettingsPage";
-            this.Load += new System.EventHandler(this.SettingsPage_Load);
+            this.Text = "Settings";
             this.ResumeLayout(false);
             this.PerformLayout();
 

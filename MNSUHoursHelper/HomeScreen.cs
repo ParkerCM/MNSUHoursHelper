@@ -12,33 +12,23 @@ namespace MNSUHoursHelper
 {
     public partial class HomeScreen : Form
     {
+        private bool[] daysWorked = new bool[] { true, true, true, true, true, true, true, true, true, true };
 
-        private Dictionary<int, bool> daysWorked = new Dictionary<int, bool>()
-        {
-            {0, true },
-            {1, true },
-            {2, true },
-            {3, false },
-            {4, false },
-            {5, true },
-            {6, true },
-            {7, true },
-            {8, true },
-            {9, true },
-            {10, false },
-            {11, false },
-            {12, true },
-            {13, true }
-        };
         private bool fullTime = false;
 
-    public HomeScreen()
+        public HomeScreen()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Begin selenium and pass it the settings provided by the user (or default values)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void submitButton_Click(object sender, EventArgs e)
         {
+            // Verify username and password have been entered
             if (usernameTextBox.Text == "" || passwordTextBox.Text == "")
             {
                 MessageBox.Show("You must enter your StarID and password");
@@ -50,23 +40,31 @@ namespace MNSUHoursHelper
             }
         }
 
+        /// <summary>
+        /// Open settings page and save the information given to that page when it is saved
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            //this.settingsPage.Show();
-
-            using (SettingsPage settingsPage = new SettingsPage())
+            using (SettingsPage settingsPage = new SettingsPage(daysWorked, fullTime))
             {
                 if (settingsPage.ShowDialog() == DialogResult.OK)
                 {
-                    this.daysWorked = settingsPage.GetDaysWorked;
-                    this.fullTime = settingsPage.GetFullTime;
+                    this.daysWorked = settingsPage.DaysSelected;
+                    this.fullTime = settingsPage.FullTime;
                 }
             }
         }
 
+        /// <summary>
+        /// Adds provided credentials to textboxes to quickly be able to log in to eservices
+        /// Useful when debugging selenium portion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void debugCredent_Click(object sender, EventArgs e)
         {
-            // Add credentials here to make debugging selenium quicker
             usernameTextBox.Text = "pr4715zm";
             passwordTextBox.Text = "";
         }
