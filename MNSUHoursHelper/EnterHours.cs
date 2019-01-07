@@ -14,7 +14,7 @@ namespace MNSUHoursHelper
         private String username;
         private String password;
         private IWebDriver Driver;
-        private Dictionary<int, bool> daysWorked = new Dictionary<int, bool>();
+        private bool[] daysWorked = new bool[10];
         private readonly bool fullTime;
 
         // Log in screen
@@ -44,7 +44,7 @@ namespace MNSUHoursHelper
         /// <param name="password">Password for user</param>
         /// <param name="daysWorked">Dictionary of the days they worked this pay period</param>
         /// <param name="fullTime">Did they work 8 hours?</param>
-        public EnterHours(String username, String password, Dictionary<int, bool> daysWorked, bool fullTime)
+        public EnterHours(String username, String password, bool[] daysWorked, bool fullTime)
         {
             this.username = username;
             this.password = password;
@@ -120,14 +120,26 @@ namespace MNSUHoursHelper
             Driver.FindElement(By.XPath(studentEmploymentLink)).Click();
             Driver.FindElement(By.XPath(enterTimeWorkedLink)).Click();
 
-            for (int index = 1; index <= 14; index++)
+            for (int index = 0; index < daysWorked.Length; index++)
             {
-                if (daysWorked[index - 1])
+                if (daysWorked[index])
                 {
+                    int offsetIndex = index;
+
+                    if (index >= 8)
+                    {
+                        offsetIndex = index + 4;
+                    }
+                    else if (index >= 3)
+                    {
+                        offsetIndex = index + 2;
+                    }
+
                     Driver.FindElement(By.XPath(addTimeButton)).Click();
                     Driver.FindElement(By.XPath(dateSelection)).Click();
 
-                    Driver.FindElement(By.XPath("//*[@id='date']/option[" + index.ToString() + "]")).Click();
+                    offsetIndex++;
+                    Driver.FindElement(By.XPath("//*[@id='date']/option[" + offsetIndex.ToString() + "]")).Click();
 
                     Driver.FindElement(By.XPath(startTimeSelection)).Click();
                     Driver.FindElement(By.XPath("//*[@id='startTime']/option[10]")).Click();

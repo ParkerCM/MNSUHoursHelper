@@ -14,10 +14,10 @@ namespace MNSUHoursHelper
     {
         private DateTime startOfPayPeriod;
         private DateTime endOfPayPeriod;
-        private Dictionary<int, bool> daysSelected = new Dictionary<int, bool>();
+        private bool[] daysSelected = new bool[10];
         private CheckBox[] daysCheckBoxes = new CheckBox[10];
 
-        public Dictionary<int, bool> DaysSelected
+        public bool[] DaysSelected
         {
             get { return daysSelected; }
             set { daysSelected = value; }
@@ -29,7 +29,7 @@ namespace MNSUHoursHelper
             set { fullTimeCheckbox.Checked = value; }
         }
 
-        public SettingsPage(Dictionary<int, bool> daysWorked, bool fullTime)
+        public SettingsPage(bool[] daysWorked, bool fullTime)
         {
             InitializeComponent();
 
@@ -79,24 +79,11 @@ namespace MNSUHoursHelper
         /// </summary>
         /// <param name="boxes"></param>
         /// <param name="daysWorking"></param>
-        private void CheckUncheckBoxes(CheckBox[] boxes, Dictionary<int, bool> daysWorking)
+        private void CheckUncheckBoxes(CheckBox[] boxes, bool[] daysWorking)
         {
-            int altIndex;
-
             for (int index = 0; index < boxes.Length; index++)
             {
-                altIndex = index;
-
-                if (index >= 8)
-                {
-                    altIndex = index + 4;
-                }
-                else if (index >= 3)
-                {
-                    altIndex = index + 2;
-                }
-
-                if (!daysWorking[altIndex])
+                if (!daysWorking[index])
                 {
                     boxes[index].Checked = false;
                 }
@@ -113,21 +100,20 @@ namespace MNSUHoursHelper
         /// <param name="boxes">Array of all day checkboxes on the page</param>
         private void AddDateToCheckboxes(CheckBox[] boxes, DateTime payPeriod)
         {
-            int altIndex;
-
             for (int index = 0; index < boxes.Length; index++)
             {
-                altIndex = index;
+                int offsetIndex = index;
+
                 if (index >= 8)
                 {
-                    altIndex += 4;
+                    offsetIndex = index + 4;
                 }
                 else if (index >= 3)
                 {
-                    altIndex += 2;
+                    offsetIndex = index + 2;
                 }
 
-                boxes[index].Text += " " + payPeriod.AddDays(altIndex).Month.ToString() + "/" + payPeriod.AddDays(altIndex).Day.ToString();
+                boxes[index].Text += " " + payPeriod.AddDays(offsetIndex).Month.ToString() + "/" + payPeriod.AddDays(offsetIndex).Day.ToString();
             }
         }
 
@@ -161,28 +147,15 @@ namespace MNSUHoursHelper
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            int altIndex;
-
             for (int index = 0; index < daysCheckBoxes.Length; index++)
             {
-                altIndex = index;
-
-                if (index >= 8)
-                {
-                    altIndex = index + 4;
-                }
-                else if (index >= 3)
-                {
-                    altIndex = index + 2;
-                }
-
                 if (!daysCheckBoxes[index].Checked)
                 {
-                    DaysSelected[altIndex] = false;
+                    DaysSelected[index] = false;
                 }
                 else
                 {
-                    DaysSelected[altIndex] = true;
+                    DaysSelected[index] = true;
                 }
             }
             // Send back OK result so the form data can be transfered back to home screen

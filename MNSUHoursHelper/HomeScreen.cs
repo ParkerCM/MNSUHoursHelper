@@ -12,23 +12,7 @@ namespace MNSUHoursHelper
 {
     public partial class HomeScreen : Form
     {
-        private Dictionary<int, bool> daysWorked = new Dictionary<int, bool>()
-        {
-            {0, true },
-            {1, true },
-            {2, true },
-            {3, false },
-            {4, false },
-            {5, true },
-            {6, true },
-            {7, true },
-            {8, true },
-            {9, true },
-            {10, false },
-            {11, false },
-            {12, true },
-            {13, true }
-        };
+        private bool[] daysWorked = new bool[] { true, true, true, true, true, true, true, true, true, true };
 
         private bool fullTime = false;
 

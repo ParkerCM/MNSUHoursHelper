@@ -44,9 +44,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(47, 45);
+            this.usernameLabel.Location = new System.Drawing.Point(94, 87);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(54, 21);
+            this.usernameLabel.Size = new System.Drawing.Size(108, 45);
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "StarID";
             this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -54,17 +55,19 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(118, 42);
+            this.usernameTextBox.Location = new System.Drawing.Point(236, 81);
+            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(279, 29);
+            this.usernameTextBox.Size = new System.Drawing.Size(554, 50);
             this.usernameTextBox.TabIndex = 1;
             // 
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(118, 88);
+            this.passwordTextBox.Location = new System.Drawing.Point(236, 169);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(279, 29);
+            this.passwordTextBox.Size = new System.Drawing.Size(554, 50);
             this.passwordTextBox.TabIndex = 3;
             this.passwordTextBox.UseSystemPasswordChar = true;
             // 
@@ -75,18 +78,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(20, 88);
+            this.passwordLabel.Location = new System.Drawing.Point(40, 169);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(79, 21);
+            this.passwordLabel.Size = new System.Drawing.Size(156, 45);
             this.passwordLabel.TabIndex = 2;
             this.passwordLabel.Text = "Password";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(132, 145);
+            this.submitButton.Location = new System.Drawing.Point(264, 279);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(70, 33);
+            this.submitButton.Size = new System.Drawing.Size(140, 63);
             this.submitButton.TabIndex = 4;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -94,9 +99,10 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Location = new System.Drawing.Point(221, 145);
+            this.settingsButton.Location = new System.Drawing.Point(442, 279);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(70, 33);
+            this.settingsButton.Size = new System.Drawing.Size(140, 63);
             this.settingsButton.TabIndex = 5;
             this.settingsButton.Text = "Settings";
             this.settingsButton.UseVisualStyleBackColor = true;
@@ -104,9 +110,10 @@
             // 
             // debugCredent
             // 
-            this.debugCredent.Location = new System.Drawing.Point(348, 150);
+            this.debugCredent.Location = new System.Drawing.Point(696, 288);
+            this.debugCredent.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.debugCredent.Name = "debugCredent";
-            this.debugCredent.Size = new System.Drawing.Size(75, 23);
+            this.debugCredent.Size = new System.Drawing.Size(150, 44);
             this.debugCredent.TabIndex = 6;
             this.debugCredent.Text = "Add Info";
             this.debugCredent.UseVisualStyleBackColor = true;
@@ -114,9 +121,10 @@
             // 
             // HomeScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.submitButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 215);
+            this.ClientSize = new System.Drawing.Size(870, 413);
             this.Controls.Add(this.debugCredent);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.submitButton);
@@ -124,6 +132,7 @@
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.usernameLabel);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "HomeScreen";
             this.Text = "Hours Helper";
             this.ResumeLayout(false);
