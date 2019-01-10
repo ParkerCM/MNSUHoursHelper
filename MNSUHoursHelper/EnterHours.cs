@@ -15,6 +15,7 @@ namespace MNSUHoursHelper
         private String password;
         private IWebDriver Driver;
         private bool[] daysWorked = new bool[10];
+        private bool[] partTimeHours = new bool[10];
         private readonly bool fullTime;
 
         // Log in screen
@@ -36,6 +37,7 @@ namespace MNSUHoursHelper
         private readonly String endTimeSelection = "//*[@id='endTime']";
         private readonly String saveTime = "//*[@id='timeSaveOrAddId']";
         private readonly String continueOnHolidayAlert = "//*[@id='continueId']";
+        private readonly String deleteTimeButton = "//*[@id='deleteId']";
 
         /// <summary>
         /// Create webdriver and navigate to eservices. Collect user settings and store them
@@ -44,13 +46,66 @@ namespace MNSUHoursHelper
         /// <param name="password">Password for user</param>
         /// <param name="daysWorked">Dictionary of the days they worked this pay period</param>
         /// <param name="fullTime">Did they work 8 hours?</param>
-        public EnterHours(String username, String password, bool[] daysWorked, bool fullTime)
+        public EnterHours(String username, String password, bool[] daysWorked, bool fullTime, bool[] partTimeHours)
         {
             this.username = username;
             this.password = password;
             this.daysWorked = daysWorked;
             this.fullTime = fullTime;
+            this.partTimeHours = partTimeHours;
+        }
 
+        /// <summary>
+        /// Debug method that deletes all entered hours
+        /// </summary>
+        public void Delete()
+        {
+            bool stillEntry = true;
+
+            InitializeBrowser();
+            LogIn();
+
+            while (stillEntry)
+            {
+                try
+                {
+                    Driver.FindElement(By.XPath("//*[@id='date_0 }']")).Click();
+                    Driver.FindElement(By.XPath(deleteTimeButton)).Click();
+                }
+                catch (NoSuchElementException)
+                {
+                    stillEntry = false;
+                }
+            }
+
+            Driver.Dispose();
+        }
+
+        /// <summary>
+        /// Calls methods in correct order. Used after the constructor
+        /// </summary>
+        public bool Add()
+        {
+            InitializeBrowser();
+            bool success = LogIn();
+
+            // If log in failed, then success will evaluate to false
+            if (success)
+            {
+                AddHours();
+            }
+            else
+            {
+                return false;
+            }
+
+            Kill();
+
+            return true;
+        }
+
+        private void InitializeBrowser()
+        {
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
 
@@ -60,23 +115,12 @@ namespace MNSUHoursHelper
 
             Driver = new ChromeDriver(chromeDriverService, options);
             Driver.Navigate().GoToUrl("https://www.mnsu.edu/eservices/");
-
-            this.Main();
-        }
-
-        /// <summary>
-        /// Calls methods in correct order. Used after the constructor
-        /// </summary>
-        private void Main()
-        {
-            LogIn();
-            AddHours();
         }
 
         /// <summary>
         /// Logs in to eservices with the provided username and password
         /// </summary>
-        public void LogIn()
+        private bool LogIn()
         {
             var username = Driver.FindElement(By.XPath(usernameField));
             username.Click();
@@ -94,6 +138,8 @@ namespace MNSUHoursHelper
                 // If credentials did not work close browser
                 Driver.FindElement(By.XPath(logInErrorMessage));
                 Driver.Dispose();
+
+                return false;
             }
             catch (NoSuchElementException)
             {
@@ -107,8 +153,13 @@ namespace MNSUHoursHelper
                 }
                 catch (NoSuchElementException)
                 {
-                    return;
+               
                 }
+
+                Driver.FindElement(By.XPath(studentEmploymentLink)).Click();
+                Driver.FindElement(By.XPath(enterTimeWorkedLink)).Click();
+
+                return true;
             }
         }
 
@@ -117,9 +168,6 @@ namespace MNSUHoursHelper
         /// </summary>
         private void AddHours()
         {
-            Driver.FindElement(By.XPath(studentEmploymentLink)).Click();
-            Driver.FindElement(By.XPath(enterTimeWorkedLink)).Click();
-
             for (int index = 0; index < daysWorked.Length; index++)
             {
                 if (daysWorked[index])
@@ -145,7 +193,7 @@ namespace MNSUHoursHelper
                     Driver.FindElement(By.XPath("//*[@id='startTime']/option[10]")).Click();
                     Driver.FindElement(By.XPath(endTimeSelection)).Click();
 
-                    if (fullTime)
+                    if (!partTimeHours[index])
                     {
                         Driver.FindElement(By.XPath("//*[@id='endTime']/option[32]")).Click();
                     }
@@ -166,6 +214,28 @@ namespace MNSUHoursHelper
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Waits for the user to close Chrome window and then disposes the driver
+        /// </summary>
+        public void Kill()
+        {
+            while (true)
+            {
+                try
+                {
+                    // Keep trying to get window title. Will throw an error when the window closes
+                    var validator = Driver.CurrentWindowHandle;
+                    System.Threading.Thread.Sleep(1000);
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+            }
+
+            Driver.Dispose();
         }
     }
 }

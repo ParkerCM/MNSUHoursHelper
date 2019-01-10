@@ -225,6 +225,9 @@ namespace MNSUHoursHelper
             this.Close();
         }
 
+        /// <summary>
+        /// Checks all part time boxes if part time is selected. Deselects when full time is selected
+        /// </summary>
         private void partTimeRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (partTimeRadio.Checked)
@@ -240,6 +243,140 @@ namespace MNSUHoursHelper
                 {
                     box.Checked = false;
                 }
+            }
+        }
+
+        // Below methods listen for a day of the week box to change state
+        // If the box is unchecked, then the part time box will become unchecked and disabled
+        // If the box is checked, then the part time box will become enabled
+
+        private void day1Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day1Checkbox.Checked)
+            {
+                day1PartTime.Enabled = true;
+            }
+            else
+            {
+                day1PartTime.Checked = false;
+                day1PartTime.Enabled = false;
+            }
+        }
+
+        private void day2Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day2Checkbox.Checked)
+            {
+                day2PartTime.Enabled = true;
+            }
+            else
+            {
+                day2PartTime.Checked = false;
+                day2PartTime.Enabled = false;
+            }
+        }
+
+        private void day3Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day3Checkbox.Checked)
+            {
+                day3PartTime.Enabled = true;
+            }
+            else
+            {
+                day3PartTime.Checked = false;
+                day3PartTime.Enabled = false;
+            }
+        }
+
+        private void day4Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day4Checkbox.Checked)
+            {
+                day4PartTime.Enabled = true;
+            }
+            else
+            {
+                day4PartTime.Checked = false;
+                day4PartTime.Enabled = false;
+            }
+        }
+
+        private void day5Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day5Checkbox.Checked)
+            {
+                day5PartTime.Enabled = true;
+            }
+            else
+            {
+                day5PartTime.Checked = false;
+                day5PartTime.Enabled = false;
+            }
+        }
+
+        private void day6Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day6Checkbox.Checked)
+            {
+                day6PartTime.Enabled = true;
+            }
+            else
+            {
+                day6PartTime.Checked = false;
+                day6PartTime.Enabled = false;
+            }
+        }
+
+        private void day7Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day7Checkbox.Checked)
+            {
+                day7PartTime.Enabled = true;
+            }
+            else
+            {
+                day7PartTime.Checked = false;
+                day7PartTime.Enabled = false;
+            }
+        }
+
+        private void day8Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day8Checkbox.Checked)
+            {
+                day8PartTime.Enabled = true;
+            }
+            else
+            {
+                day8PartTime.Checked = false;
+                day8PartTime.Enabled = false;
+            }
+        }
+
+        private void day9Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day9Checkbox.Checked)
+            {
+                day9PartTime.Enabled = true;
+            }
+            else
+            {
+                day9PartTime.Checked = false;
+                day9PartTime.Enabled = false;
+            }
+        }
+
+        private void day10Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (day10Checkbox.Checked)
+            {
+                day10PartTime.Enabled = true;
+            }
+            else
+            {
+                day10PartTime.Checked = false;
+                day10PartTime.Enabled = false;
             }
         }
     }

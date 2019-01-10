@@ -78,6 +78,7 @@
             this.day1Checkbox.TabIndex = 3;
             this.day1Checkbox.Text = "Wednesday";
             this.day1Checkbox.UseVisualStyleBackColor = true;
+            this.day1Checkbox.CheckedChanged += new System.EventHandler(this.day1Checkbox_CheckedChanged);
             // 
             // day2Checkbox
             // 
@@ -90,6 +91,7 @@
             this.day2Checkbox.TabIndex = 4;
             this.day2Checkbox.Text = "Thursday";
             this.day2Checkbox.UseVisualStyleBackColor = true;
+            this.day2Checkbox.CheckedChanged += new System.EventHandler(this.day2Checkbox_CheckedChanged);
             // 
             // day3Checkbox
             // 
@@ -102,6 +104,7 @@
             this.day3Checkbox.TabIndex = 5;
             this.day3Checkbox.Text = "Friday";
             this.day3Checkbox.UseVisualStyleBackColor = true;
+            this.day3Checkbox.CheckedChanged += new System.EventHandler(this.day3Checkbox_CheckedChanged);
             // 
             // day4Checkbox
             // 
@@ -114,6 +117,7 @@
             this.day4Checkbox.TabIndex = 6;
             this.day4Checkbox.Text = "Monday";
             this.day4Checkbox.UseVisualStyleBackColor = true;
+            this.day4Checkbox.CheckedChanged += new System.EventHandler(this.day4Checkbox_CheckedChanged);
             // 
             // day5Checkbox
             // 
@@ -126,6 +130,7 @@
             this.day5Checkbox.TabIndex = 7;
             this.day5Checkbox.Text = "Tuesday";
             this.day5Checkbox.UseVisualStyleBackColor = true;
+            this.day5Checkbox.CheckedChanged += new System.EventHandler(this.day5Checkbox_CheckedChanged);
             // 
             // day6Checkbox
             // 
@@ -138,6 +143,7 @@
             this.day6Checkbox.TabIndex = 8;
             this.day6Checkbox.Text = "Wednesday";
             this.day6Checkbox.UseVisualStyleBackColor = true;
+            this.day6Checkbox.CheckedChanged += new System.EventHandler(this.day6Checkbox_CheckedChanged);
             // 
             // day7Checkbox
             // 
@@ -150,6 +156,7 @@
             this.day7Checkbox.TabIndex = 9;
             this.day7Checkbox.Text = "Thursday";
             this.day7Checkbox.UseVisualStyleBackColor = true;
+            this.day7Checkbox.CheckedChanged += new System.EventHandler(this.day7Checkbox_CheckedChanged);
             // 
             // day8Checkbox
             // 
@@ -162,6 +169,7 @@
             this.day8Checkbox.TabIndex = 10;
             this.day8Checkbox.Text = "Friday";
             this.day8Checkbox.UseVisualStyleBackColor = true;
+            this.day8Checkbox.CheckedChanged += new System.EventHandler(this.day8Checkbox_CheckedChanged);
             // 
             // day9Checkbox
             // 
@@ -174,6 +182,7 @@
             this.day9Checkbox.TabIndex = 11;
             this.day9Checkbox.Text = "Monday";
             this.day9Checkbox.UseVisualStyleBackColor = true;
+            this.day9Checkbox.CheckedChanged += new System.EventHandler(this.day9Checkbox_CheckedChanged);
             // 
             // day10Checkbox
             // 
@@ -186,6 +195,7 @@
             this.day10Checkbox.TabIndex = 12;
             this.day10Checkbox.Text = "Tuesday";
             this.day10Checkbox.UseVisualStyleBackColor = true;
+            this.day10Checkbox.CheckedChanged += new System.EventHandler(this.day10Checkbox_CheckedChanged);
             // 
             // calendarWidget
             // 

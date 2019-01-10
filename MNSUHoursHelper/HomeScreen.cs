@@ -14,12 +14,15 @@ namespace MNSUHoursHelper
     {
         private bool[] daysWorked = new bool[] { true, true, true, true, true, true, true, true, true, true };
         private bool[] partTimeHours = new bool[] { true, true, true, true, true, true, true, true, true, true };
+        int debugModeCount = 0;
 
         private bool fullTime = false;
 
         public HomeScreen()
         {
             InitializeComponent();
+            debugCredent.Hide();
+            deleteHoursBtn.Hide();
         }
 
         /// <summary>
@@ -36,8 +39,13 @@ namespace MNSUHoursHelper
             }
             else
             {
-                EnterHours enterHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, daysWorked, fullTime);
-                this.Close();
+                EnterHours enterHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, daysWorked, fullTime, partTimeHours);
+                bool success = enterHours.Add();
+
+                if (!success)
+                {
+                    MessageBox.Show("Error. Please verify StarID and password are correct and try again");
+                }
             }
         }
 
@@ -68,7 +76,24 @@ namespace MNSUHoursHelper
         private void debugCredent_Click(object sender, EventArgs e)
         {
             usernameTextBox.Text = "pr4715zm";
-            passwordTextBox.Text = "";
+            passwordTextBox.Text = "N0rm@nD@C@t";
+        }
+
+        private void deleteHoursBtn_Click(object sender, EventArgs e)
+        {
+            EnterHours deleteHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, daysWorked, fullTime, partTimeHours);
+            deleteHours.Delete();
+        }
+
+        private void usernameLabel_Click(object sender, EventArgs e)
+        {
+            debugModeCount++;
+
+            if (debugModeCount >= 5)
+            {
+                deleteHoursBtn.Show();
+                debugCredent.Show();
+            }
         }
     }
 }
