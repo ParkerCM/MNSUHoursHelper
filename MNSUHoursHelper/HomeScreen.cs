@@ -13,6 +13,7 @@ namespace MNSUHoursHelper
     public partial class HomeScreen : Form
     {
         private bool[] daysWorked = new bool[] { true, true, true, true, true, true, true, true, true, true };
+        private bool[] partTimeHours = new bool[] { true, true, true, true, true, true, true, true, true, true };
 
         private bool fullTime = false;
 
@@ -47,12 +48,13 @@ namespace MNSUHoursHelper
         /// <param name="e"></param>
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            using (SettingsPage settingsPage = new SettingsPage(daysWorked, fullTime))
+            using (SettingsPage settingsPage = new SettingsPage(daysWorked, fullTime, partTimeHours))
             {
                 if (settingsPage.ShowDialog() == DialogResult.OK)
                 {
                     this.daysWorked = settingsPage.DaysSelected;
                     this.fullTime = settingsPage.FullTime;
+                    this.partTimeHours = settingsPage.PartTimeDays;
                 }
             }
         }

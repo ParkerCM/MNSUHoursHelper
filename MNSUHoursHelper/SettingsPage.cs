@@ -15,7 +15,9 @@ namespace MNSUHoursHelper
         private DateTime startOfPayPeriod;
         private DateTime endOfPayPeriod;
         private bool[] daysSelected = new bool[10];
+        private bool[] partTimeDays = new bool[10];
         private CheckBox[] daysCheckBoxes = new CheckBox[10];
+        private CheckBox[] partTimeCheckBoxes = new CheckBox[10];
 
         public bool[] DaysSelected
         {
@@ -23,21 +25,29 @@ namespace MNSUHoursHelper
             set { daysSelected = value; }
         }
 
-        public bool FullTime
+        public bool[] PartTimeDays
         {
-            get { return fullTimeCheckbox.Checked; }
-            set { fullTimeCheckbox.Checked = value; }
+            get { return partTimeDays; }
+            set { partTimeDays = value; }
         }
 
-        public SettingsPage(bool[] daysWorked, bool fullTime)
+        public bool FullTime
+        {
+            get { return fullTimeRadio.Checked; }
+            set { fullTimeRadio.Checked = value; }
+        }
+
+        public SettingsPage(bool[] daysWorked, bool fullTime, bool[] partTimeHours)
         {
             InitializeComponent();
 
             DaysSelected = daysWorked;
             FullTime = fullTime;
+            PartTimeDays = partTimeHours;
             
             daysCheckBoxes = SetUpCheckboxArray(daysCheckBoxes);
-            CheckUncheckBoxes(daysCheckBoxes, daysSelected);
+            partTimeCheckBoxes = SetUpHoursCheckboxArray(partTimeCheckBoxes);
+            CheckUncheckBoxes(daysCheckBoxes, DaysSelected, partTimeCheckBoxes, PartTimeDays);
             SetCurrentPayPeriod();
             AddDateToCheckboxes(daysCheckBoxes, startOfPayPeriod);
         }
@@ -79,17 +89,28 @@ namespace MNSUHoursHelper
         /// </summary>
         /// <param name="boxes"></param>
         /// <param name="daysWorking"></param>
-        private void CheckUncheckBoxes(CheckBox[] boxes, bool[] daysWorking)
+        private void CheckUncheckBoxes(CheckBox[] daysBoxes, bool[] daysWorking, CheckBox[] hoursBoxes, bool[] partTime)
         {
-            for (int index = 0; index < boxes.Length; index++)
+            // Days of the week
+            for (int index = 0; index < daysBoxes.Length; index++)
             {
                 if (!daysWorking[index])
                 {
-                    boxes[index].Checked = false;
+                    daysBoxes[index].Checked = false;
                 }
                 else
                 {
-                    boxes[index].Checked = true;
+                    daysBoxes[index].Checked = true;
+                }
+
+                // Part time boxes
+                if (!partTime[index])
+                {
+                    hoursBoxes[index].Checked = false;
+                }
+                else
+                {
+                    hoursBoxes[index].Checked = true;
                 }
             }
         }
@@ -138,6 +159,27 @@ namespace MNSUHoursHelper
             return boxes;
         }
 
+        /// <summary>
+        /// Adds part time checkbox to the arrary
+        /// </summary>
+        /// <param name="boxes">Empty array for holding checkboxes</param>
+        /// <returns>An array with all part time checkboxes</returns>
+        private CheckBox[] SetUpHoursCheckboxArray(CheckBox[] boxes)
+        {
+            boxes[0] = day1PartTime;
+            boxes[1] = day2PartTime;
+            boxes[2] = day3PartTime;
+            boxes[3] = day4PartTime;
+            boxes[4] = day5PartTime;
+            boxes[5] = day6PartTime;
+            boxes[6] = day7PartTime;
+            boxes[7] = day8PartTime;
+            boxes[8] = day9PartTime;
+            boxes[9] = day10PartTime;
+
+            return boxes;
+        }
+
         /*<----- Button Actions ----->*/
 
         /// <summary>
@@ -149,6 +191,7 @@ namespace MNSUHoursHelper
         {
             for (int index = 0; index < daysCheckBoxes.Length; index++)
             {
+                // Save day checkboxes
                 if (!daysCheckBoxes[index].Checked)
                 {
                     DaysSelected[index] = false;
@@ -156,6 +199,16 @@ namespace MNSUHoursHelper
                 else
                 {
                     DaysSelected[index] = true;
+                }
+
+                // Save hour checkboxes
+                if (!partTimeCheckBoxes[index].Checked)
+                {
+                    PartTimeDays[index] = false;
+                }
+                else
+                {
+                    PartTimeDays[index] = true;
                 }
             }
             // Send back OK result so the form data can be transfered back to home screen
@@ -170,6 +223,24 @@ namespace MNSUHoursHelper
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void partTimeRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (partTimeRadio.Checked)
+            {
+                foreach (CheckBox box in partTimeCheckBoxes)
+                {
+                    box.Checked = true;
+                }
+            }
+            else
+            {
+                foreach (CheckBox box in partTimeCheckBoxes)
+                {
+                    box.Checked = false;
+                }
+            }
         }
     }
 }

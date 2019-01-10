@@ -43,7 +43,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.fullTimeCheckbox = new System.Windows.Forms.CheckBox();
+            this.fullTimeRadio = new System.Windows.Forms.RadioButton();
+            this.partTimeRadio = new System.Windows.Forms.RadioButton();
+            this.day1PartTime = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.day10PartTime = new System.Windows.Forms.CheckBox();
+            this.day9PartTime = new System.Windows.Forms.CheckBox();
+            this.day8PartTime = new System.Windows.Forms.CheckBox();
+            this.day7PartTime = new System.Windows.Forms.CheckBox();
+            this.day6PartTime = new System.Windows.Forms.CheckBox();
+            this.day5PartTime = new System.Windows.Forms.CheckBox();
+            this.day4PartTime = new System.Windows.Forms.CheckBox();
+            this.day3PartTime = new System.Windows.Forms.CheckBox();
+            this.day2PartTime = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // payPeriodLabel
@@ -60,7 +72,7 @@
             this.day1Checkbox.AutoSize = true;
             this.day1Checkbox.Checked = true;
             this.day1Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day1Checkbox.Location = new System.Drawing.Point(15, 72);
+            this.day1Checkbox.Location = new System.Drawing.Point(63, 94);
             this.day1Checkbox.Name = "day1Checkbox";
             this.day1Checkbox.Size = new System.Drawing.Size(83, 17);
             this.day1Checkbox.TabIndex = 3;
@@ -72,7 +84,7 @@
             this.day2Checkbox.AutoSize = true;
             this.day2Checkbox.Checked = true;
             this.day2Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day2Checkbox.Location = new System.Drawing.Point(15, 95);
+            this.day2Checkbox.Location = new System.Drawing.Point(63, 117);
             this.day2Checkbox.Name = "day2Checkbox";
             this.day2Checkbox.Size = new System.Drawing.Size(70, 17);
             this.day2Checkbox.TabIndex = 4;
@@ -84,7 +96,7 @@
             this.day3Checkbox.AutoSize = true;
             this.day3Checkbox.Checked = true;
             this.day3Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day3Checkbox.Location = new System.Drawing.Point(15, 118);
+            this.day3Checkbox.Location = new System.Drawing.Point(63, 140);
             this.day3Checkbox.Name = "day3Checkbox";
             this.day3Checkbox.Size = new System.Drawing.Size(54, 17);
             this.day3Checkbox.TabIndex = 5;
@@ -96,7 +108,7 @@
             this.day4Checkbox.AutoSize = true;
             this.day4Checkbox.Checked = true;
             this.day4Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day4Checkbox.Location = new System.Drawing.Point(15, 164);
+            this.day4Checkbox.Location = new System.Drawing.Point(63, 172);
             this.day4Checkbox.Name = "day4Checkbox";
             this.day4Checkbox.Size = new System.Drawing.Size(64, 17);
             this.day4Checkbox.TabIndex = 6;
@@ -108,7 +120,7 @@
             this.day5Checkbox.AutoSize = true;
             this.day5Checkbox.Checked = true;
             this.day5Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day5Checkbox.Location = new System.Drawing.Point(15, 187);
+            this.day5Checkbox.Location = new System.Drawing.Point(63, 195);
             this.day5Checkbox.Name = "day5Checkbox";
             this.day5Checkbox.Size = new System.Drawing.Size(67, 17);
             this.day5Checkbox.TabIndex = 7;
@@ -120,7 +132,7 @@
             this.day6Checkbox.AutoSize = true;
             this.day6Checkbox.Checked = true;
             this.day6Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day6Checkbox.Location = new System.Drawing.Point(15, 210);
+            this.day6Checkbox.Location = new System.Drawing.Point(63, 218);
             this.day6Checkbox.Name = "day6Checkbox";
             this.day6Checkbox.Size = new System.Drawing.Size(83, 17);
             this.day6Checkbox.TabIndex = 8;
@@ -132,7 +144,7 @@
             this.day7Checkbox.AutoSize = true;
             this.day7Checkbox.Checked = true;
             this.day7Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day7Checkbox.Location = new System.Drawing.Point(15, 233);
+            this.day7Checkbox.Location = new System.Drawing.Point(63, 241);
             this.day7Checkbox.Name = "day7Checkbox";
             this.day7Checkbox.Size = new System.Drawing.Size(70, 17);
             this.day7Checkbox.TabIndex = 9;
@@ -144,7 +156,7 @@
             this.day8Checkbox.AutoSize = true;
             this.day8Checkbox.Checked = true;
             this.day8Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day8Checkbox.Location = new System.Drawing.Point(15, 256);
+            this.day8Checkbox.Location = new System.Drawing.Point(63, 264);
             this.day8Checkbox.Name = "day8Checkbox";
             this.day8Checkbox.Size = new System.Drawing.Size(54, 17);
             this.day8Checkbox.TabIndex = 10;
@@ -156,7 +168,7 @@
             this.day9Checkbox.AutoSize = true;
             this.day9Checkbox.Checked = true;
             this.day9Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day9Checkbox.Location = new System.Drawing.Point(15, 302);
+            this.day9Checkbox.Location = new System.Drawing.Point(63, 296);
             this.day9Checkbox.Name = "day9Checkbox";
             this.day9Checkbox.Size = new System.Drawing.Size(64, 17);
             this.day9Checkbox.TabIndex = 11;
@@ -168,7 +180,7 @@
             this.day10Checkbox.AutoSize = true;
             this.day10Checkbox.Checked = true;
             this.day10Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.day10Checkbox.Location = new System.Drawing.Point(15, 325);
+            this.day10Checkbox.Location = new System.Drawing.Point(63, 319);
             this.day10Checkbox.Name = "day10Checkbox";
             this.day10Checkbox.Size = new System.Drawing.Size(67, 17);
             this.day10Checkbox.TabIndex = 12;
@@ -189,7 +201,7 @@
         new System.DateTime(2019, 12, 25, 0, 0, 0, 0)};
             this.calendarWidget.BackColor = System.Drawing.SystemColors.Control;
             this.calendarWidget.CalendarDimensions = new System.Drawing.Size(1, 2);
-            this.calendarWidget.Location = new System.Drawing.Point(149, 38);
+            this.calendarWidget.Location = new System.Drawing.Point(188, 38);
             this.calendarWidget.MaxSelectionCount = 14;
             this.calendarWidget.Name = "calendarWidget";
             this.calendarWidget.ShowWeekNumbers = true;
@@ -198,7 +210,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 358);
+            this.label1.Location = new System.Drawing.Point(215, 358);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 13);
             this.label1.TabIndex = 14;
@@ -224,22 +236,166 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // fullTimeCheckbox
+            // fullTimeRadio
             // 
-            this.fullTimeCheckbox.AutoSize = true;
-            this.fullTimeCheckbox.Location = new System.Drawing.Point(15, 38);
-            this.fullTimeCheckbox.Name = "fullTimeCheckbox";
-            this.fullTimeCheckbox.Size = new System.Drawing.Size(64, 17);
-            this.fullTimeCheckbox.TabIndex = 17;
-            this.fullTimeCheckbox.Text = "Full time";
-            this.fullTimeCheckbox.UseVisualStyleBackColor = true;
+            this.fullTimeRadio.AutoSize = true;
+            this.fullTimeRadio.Location = new System.Drawing.Point(15, 38);
+            this.fullTimeRadio.Name = "fullTimeRadio";
+            this.fullTimeRadio.Size = new System.Drawing.Size(67, 17);
+            this.fullTimeRadio.TabIndex = 18;
+            this.fullTimeRadio.Text = "Full Time";
+            this.fullTimeRadio.UseVisualStyleBackColor = true;
+            // 
+            // partTimeRadio
+            // 
+            this.partTimeRadio.AutoSize = true;
+            this.partTimeRadio.Checked = true;
+            this.partTimeRadio.Location = new System.Drawing.Point(92, 38);
+            this.partTimeRadio.Name = "partTimeRadio";
+            this.partTimeRadio.Size = new System.Drawing.Size(70, 17);
+            this.partTimeRadio.TabIndex = 19;
+            this.partTimeRadio.TabStop = true;
+            this.partTimeRadio.Text = "Part Time";
+            this.partTimeRadio.UseVisualStyleBackColor = true;
+            this.partTimeRadio.CheckedChanged += new System.EventHandler(this.partTimeRadio_CheckedChanged);
+            // 
+            // day1PartTime
+            // 
+            this.day1PartTime.AutoSize = true;
+            this.day1PartTime.Checked = true;
+            this.day1PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day1PartTime.Location = new System.Drawing.Point(15, 94);
+            this.day1PartTime.Name = "day1PartTime";
+            this.day1PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day1PartTime.TabIndex = 20;
+            this.day1PartTime.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 78);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Part Time";
+            // 
+            // day10PartTime
+            // 
+            this.day10PartTime.AutoSize = true;
+            this.day10PartTime.Checked = true;
+            this.day10PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day10PartTime.Location = new System.Drawing.Point(15, 320);
+            this.day10PartTime.Name = "day10PartTime";
+            this.day10PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day10PartTime.TabIndex = 22;
+            this.day10PartTime.UseVisualStyleBackColor = true;
+            // 
+            // day9PartTime
+            // 
+            this.day9PartTime.AutoSize = true;
+            this.day9PartTime.Checked = true;
+            this.day9PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day9PartTime.Location = new System.Drawing.Point(15, 297);
+            this.day9PartTime.Name = "day9PartTime";
+            this.day9PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day9PartTime.TabIndex = 23;
+            this.day9PartTime.UseVisualStyleBackColor = true;
+            // 
+            // day8PartTime
+            // 
+            this.day8PartTime.AutoSize = true;
+            this.day8PartTime.Checked = true;
+            this.day8PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day8PartTime.Location = new System.Drawing.Point(15, 265);
+            this.day8PartTime.Name = "day8PartTime";
+            this.day8PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day8PartTime.TabIndex = 24;
+            this.day8PartTime.UseVisualStyleBackColor = true;
+            // 
+            // day7PartTime
+            // 
+            this.day7PartTime.AutoSize = true;
+            this.day7PartTime.Checked = true;
+            this.day7PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day7PartTime.Location = new System.Drawing.Point(15, 242);
+            this.day7PartTime.Name = "day7PartTime";
+            this.day7PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day7PartTime.TabIndex = 25;
+            this.day7PartTime.UseVisualStyleBackColor = true;
+            // 
+            // day6PartTime
+            // 
+            this.day6PartTime.AutoSize = true;
+            this.day6PartTime.Checked = true;
+            this.day6PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day6PartTime.Location = new System.Drawing.Point(15, 219);
+            this.day6PartTime.Name = "day6PartTime";
+            this.day6PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day6PartTime.TabIndex = 26;
+            this.day6PartTime.UseVisualStyleBackColor = true;
+            // 
+            // day5PartTime
+            // 
+            this.day5PartTime.AutoSize = true;
+            this.day5PartTime.Checked = true;
+            this.day5PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day5PartTime.Location = new System.Drawing.Point(15, 196);
+            this.day5PartTime.Name = "day5PartTime";
+            this.day5PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day5PartTime.TabIndex = 27;
+            this.day5PartTime.UseVisualStyleBackColor = true;
+            // 
+            // day4PartTime
+            // 
+            this.day4PartTime.AutoSize = true;
+            this.day4PartTime.Checked = true;
+            this.day4PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day4PartTime.Location = new System.Drawing.Point(15, 175);
+            this.day4PartTime.Name = "day4PartTime";
+            this.day4PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day4PartTime.TabIndex = 28;
+            this.day4PartTime.UseVisualStyleBackColor = true;
+            // 
+            // day3PartTime
+            // 
+            this.day3PartTime.AutoSize = true;
+            this.day3PartTime.Checked = true;
+            this.day3PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day3PartTime.Location = new System.Drawing.Point(15, 143);
+            this.day3PartTime.Name = "day3PartTime";
+            this.day3PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day3PartTime.TabIndex = 29;
+            this.day3PartTime.UseVisualStyleBackColor = true;
+            // 
+            // day2PartTime
+            // 
+            this.day2PartTime.AutoSize = true;
+            this.day2PartTime.Checked = true;
+            this.day2PartTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.day2PartTime.Location = new System.Drawing.Point(15, 120);
+            this.day2PartTime.Name = "day2PartTime";
+            this.day2PartTime.Size = new System.Drawing.Size(15, 14);
+            this.day2PartTime.TabIndex = 30;
+            this.day2PartTime.UseVisualStyleBackColor = true;
             // 
             // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 451);
-            this.Controls.Add(this.fullTimeCheckbox);
+            this.ClientSize = new System.Drawing.Size(460, 451);
+            this.Controls.Add(this.day2PartTime);
+            this.Controls.Add(this.day3PartTime);
+            this.Controls.Add(this.day4PartTime);
+            this.Controls.Add(this.day5PartTime);
+            this.Controls.Add(this.day6PartTime);
+            this.Controls.Add(this.day7PartTime);
+            this.Controls.Add(this.day8PartTime);
+            this.Controls.Add(this.day9PartTime);
+            this.Controls.Add(this.day10PartTime);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.day1PartTime);
+            this.Controls.Add(this.partTimeRadio);
+            this.Controls.Add(this.fullTimeRadio);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label1);
@@ -278,6 +434,18 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.CheckBox fullTimeCheckbox;
+        private System.Windows.Forms.RadioButton fullTimeRadio;
+        private System.Windows.Forms.RadioButton partTimeRadio;
+        private System.Windows.Forms.CheckBox day1PartTime;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox day10PartTime;
+        private System.Windows.Forms.CheckBox day9PartTime;
+        private System.Windows.Forms.CheckBox day8PartTime;
+        private System.Windows.Forms.CheckBox day7PartTime;
+        private System.Windows.Forms.CheckBox day6PartTime;
+        private System.Windows.Forms.CheckBox day5PartTime;
+        private System.Windows.Forms.CheckBox day4PartTime;
+        private System.Windows.Forms.CheckBox day3PartTime;
+        private System.Windows.Forms.CheckBox day2PartTime;
     }
 }
