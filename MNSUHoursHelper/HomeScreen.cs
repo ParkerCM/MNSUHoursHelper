@@ -24,7 +24,7 @@ namespace MNSUHoursHelper
             debugCredent.Hide();
             deleteHoursBtn.Hide();
 
-            var test = DefaultSettingsHandler.DoDefaultSettingsExist();
+            DefaultSettingsHandler.CreateDefaultSettingsFile();
         }
 
         /// <summary>
