@@ -29,6 +29,7 @@ namespace MNSUHoursHelper
                 }
                 else
                 {
+                    CreateDefaultSettingsFile();
                     return false;
                 }
             }
@@ -99,16 +100,16 @@ namespace MNSUHoursHelper
                 new XElement("Monday", true),
                 new XElement("Tuesday", true)),
                 new XElement("FullTime",
-                new XElement("Wednesday", false),
-                new XElement("Thursday", false),
-                new XElement("Friday", false),
-                new XElement("Monday", false),
-                new XElement("Tuesday", false),
-                new XElement("Wednesday", false),
-                new XElement("Thursday", false),
-                new XElement("Friday", false),
-                new XElement("Monday", false),
-                new XElement("Tuesday", false))))
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true),
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true))))
                 .Save(settingsLocation + "/DefaultSettings.xml");
         }
 
