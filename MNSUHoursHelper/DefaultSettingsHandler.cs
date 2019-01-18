@@ -40,33 +40,33 @@ namespace MNSUHoursHelper
             }
         }
 
-        public static void CreateDefaultSettingsFile()
+        public static void CreateDefaultSettingsFile(bool[] daysWorked, bool[] fullTime)
         {
             var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
 
             new XDocument(new XElement("Root",
                 new XElement("Days",
-                new XElement("Wednesday", "test"),
-                new XElement("Thursday", "test"),
-                new XElement("Friday", "test"),
-                new XElement("Monday", "test"),
-                new XElement("Tuesday", "test"),
-                new XElement("Wednesday", "test"),
-                new XElement("Thursday", "test"),
-                new XElement("Friday", "test"),
-                new XElement("Monday", "test"),
-                new XElement("Tuesday", "test")),
+                new XElement("Wednesday", daysWorked[0]),
+                new XElement("Thursday", daysWorked[1]),
+                new XElement("Friday", daysWorked[2]),
+                new XElement("Monday", daysWorked[3]),
+                new XElement("Tuesday", daysWorked[4]),
+                new XElement("Wednesday", daysWorked[5]),
+                new XElement("Thursday", daysWorked[6]),
+                new XElement("Friday", daysWorked[7]),
+                new XElement("Monday", daysWorked[8]),
+                new XElement("Tuesday", daysWorked[9])),
                 new XElement("FullTime",
-                new XElement("Wednesday", "test"),
-                new XElement("Thursday", "test"),
-                new XElement("Friday", "test"),
-                new XElement("Monday", "test"),
-                new XElement("Tuesday", "test"),
-                new XElement("Wednesday", "test"),
-                new XElement("Thursday", "test"),
-                new XElement("Friday", "test"),
-                new XElement("Monday", "test"),
-                new XElement("Tuesday", "test"))))
+                new XElement("Wednesday", fullTime[0]),
+                new XElement("Thursday", fullTime[1]),
+                new XElement("Friday", fullTime[2]),
+                new XElement("Monday", fullTime[3]),
+                new XElement("Tuesday", fullTime[4]),
+                new XElement("Wednesday", fullTime[5]),
+                new XElement("Thursday", fullTime[6]),
+                new XElement("Friday", fullTime[7]),
+                new XElement("Monday", fullTime[8]),
+                new XElement("Tuesday", fullTime[9]))))
                 .Save(settingsLocation + "/DefaultSettings.xml");
         }
 

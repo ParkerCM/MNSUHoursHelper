@@ -56,6 +56,8 @@
             this.day4PartTime = new System.Windows.Forms.CheckBox();
             this.day3PartTime = new System.Windows.Forms.CheckBox();
             this.day2PartTime = new System.Windows.Forms.CheckBox();
+            this.makeDefaultButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // payPeriodLabel
@@ -228,9 +230,9 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(100, 402);
+            this.saveButton.Location = new System.Drawing.Point(25, 401);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(80, 23);
             this.saveButton.TabIndex = 15;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -238,9 +240,9 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(249, 402);
+            this.cancelButton.Location = new System.Drawing.Point(129, 401);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Size = new System.Drawing.Size(80, 23);
             this.cancelButton.TabIndex = 16;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -388,11 +390,32 @@
             this.day2PartTime.TabIndex = 30;
             this.day2PartTime.UseVisualStyleBackColor = true;
             // 
+            // makeDefaultButton
+            // 
+            this.makeDefaultButton.Location = new System.Drawing.Point(236, 401);
+            this.makeDefaultButton.Name = "makeDefaultButton";
+            this.makeDefaultButton.Size = new System.Drawing.Size(80, 23);
+            this.makeDefaultButton.TabIndex = 31;
+            this.makeDefaultButton.Text = "Make Default";
+            this.makeDefaultButton.UseVisualStyleBackColor = true;
+            this.makeDefaultButton.Click += new System.EventHandler(this.makeDefaultButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(342, 401);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(80, 23);
+            this.resetButton.TabIndex = 32;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            // 
             // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 451);
+            this.Controls.Add(this.resetButton);
+            this.Controls.Add(this.makeDefaultButton);
             this.Controls.Add(this.day2PartTime);
             this.Controls.Add(this.day3PartTime);
             this.Controls.Add(this.day4PartTime);
@@ -457,5 +480,7 @@
         private System.Windows.Forms.CheckBox day4PartTime;
         private System.Windows.Forms.CheckBox day3PartTime;
         private System.Windows.Forms.CheckBox day2PartTime;
+        private System.Windows.Forms.Button makeDefaultButton;
+        private System.Windows.Forms.Button resetButton;
     }
 }

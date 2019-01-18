@@ -14,22 +14,12 @@ namespace MNSUHoursHelper
     {
         private DateTime startOfPayPeriod;
         private DateTime endOfPayPeriod;
-        private bool[] daysSelected = new bool[10];
-        private bool[] partTimeDays = new bool[10];
         private CheckBox[] daysCheckBoxes = new CheckBox[10];
         private CheckBox[] partTimeCheckBoxes = new CheckBox[10];
 
-        public bool[] DaysSelected
-        {
-            get { return daysSelected; }
-            set { daysSelected = value; }
-        }
+        public bool[] DaysSelected { get; set; } = new bool[10];
 
-        public bool[] PartTimeDays
-        {
-            get { return partTimeDays; }
-            set { partTimeDays = value; }
-        }
+        public bool[] PartTimeDays { get; set; } = new bool[10];
 
         public bool FullTime
         {
@@ -79,6 +69,39 @@ namespace MNSUHoursHelper
             // Highlight pay period on the calendar
             calendarWidget.SelectionStart = this.startOfPayPeriod;
             calendarWidget.SelectionEnd = this.endOfPayPeriod;
+        }
+
+        private void SaveCurrentSettings()
+        {
+            for (int index = 0; index < daysCheckBoxes.Length; index++)
+            {
+                // Save day checkboxes
+                if (!daysCheckBoxes[index].Checked)
+                {
+                    DaysSelected[index] = false;
+                }
+                else
+                {
+                    DaysSelected[index] = true;
+                }
+
+                // Save hour checkboxes
+                if (!partTimeCheckBoxes[index].Checked)
+                {
+                    PartTimeDays[index] = false;
+                }
+                else
+                {
+                    PartTimeDays[index] = true;
+                }
+            }
+        }
+
+        private void makeDefaultButton_Click(object sender, EventArgs e)
+        {
+            SaveCurrentSettings();
+
+            DefaultSettingsHandler.CreateDefaultSettingsFile(DaysSelected, PartTimeDays);
         }
 
         /*<----- Checkbox setup and formatting ----->*/
@@ -189,28 +212,8 @@ namespace MNSUHoursHelper
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            for (int index = 0; index < daysCheckBoxes.Length; index++)
-            {
-                // Save day checkboxes
-                if (!daysCheckBoxes[index].Checked)
-                {
-                    DaysSelected[index] = false;
-                }
-                else
-                {
-                    DaysSelected[index] = true;
-                }
+            SaveCurrentSettings();
 
-                // Save hour checkboxes
-                if (!partTimeCheckBoxes[index].Checked)
-                {
-                    PartTimeDays[index] = false;
-                }
-                else
-                {
-                    PartTimeDays[index] = true;
-                }
-            }
             // Send back OK result so the form data can be transfered back to home screen
             DialogResult = DialogResult.OK;
         }
