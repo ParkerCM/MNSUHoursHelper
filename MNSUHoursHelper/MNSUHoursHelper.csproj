@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultSettingsHandler.cs" />
     <Compile Include="EnterHours.cs" />
     <Compile Include="HomeScreen.cs">
       <SubType>Form</SubType>

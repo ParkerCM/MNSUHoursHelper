@@ -23,6 +23,8 @@ namespace MNSUHoursHelper
             InitializeComponent();
             debugCredent.Hide();
             deleteHoursBtn.Hide();
+
+            var test = DefaultSettingsHandler.DoDefaultSettingsExist();
         }
 
         /// <summary>
