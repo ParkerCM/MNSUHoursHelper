@@ -16,6 +16,7 @@ namespace MNSUHoursHelper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            HoursSettingsHandler.DoDefaultSettingsExist();
             Application.Run(new HomeScreen());
         }
     }

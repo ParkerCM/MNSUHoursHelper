@@ -232,7 +232,7 @@
             // 
             this.saveButton.Location = new System.Drawing.Point(25, 401);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(80, 23);
+            this.saveButton.Size = new System.Drawing.Size(80, 38);
             this.saveButton.TabIndex = 15;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -242,7 +242,7 @@
             // 
             this.cancelButton.Location = new System.Drawing.Point(129, 401);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(80, 23);
+            this.cancelButton.Size = new System.Drawing.Size(80, 38);
             this.cancelButton.TabIndex = 16;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -394,9 +394,9 @@
             // 
             this.makeDefaultButton.Location = new System.Drawing.Point(236, 401);
             this.makeDefaultButton.Name = "makeDefaultButton";
-            this.makeDefaultButton.Size = new System.Drawing.Size(80, 23);
+            this.makeDefaultButton.Size = new System.Drawing.Size(80, 38);
             this.makeDefaultButton.TabIndex = 31;
-            this.makeDefaultButton.Text = "Make Default";
+            this.makeDefaultButton.Text = "Make Default and Save";
             this.makeDefaultButton.UseVisualStyleBackColor = true;
             this.makeDefaultButton.Click += new System.EventHandler(this.makeDefaultButton_Click);
             // 
@@ -404,10 +404,11 @@
             // 
             this.resetButton.Location = new System.Drawing.Point(342, 401);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(80, 23);
+            this.resetButton.Size = new System.Drawing.Size(80, 38);
             this.resetButton.TabIndex = 32;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // SettingsPage
             // 

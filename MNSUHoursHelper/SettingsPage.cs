@@ -50,7 +50,6 @@ namespace MNSUHoursHelper
         {
             DateTime endOfAPayPeriod = new DateTime(2018, 12, 25);
             DateTime currentTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            //DateTime currentTime = new DateTime(2019, 1, 20);
 
             while (currentTime > endOfAPayPeriod)
             {
@@ -95,13 +94,16 @@ namespace MNSUHoursHelper
                     PartTimeDays[index] = true;
                 }
             }
+
         }
 
         private void makeDefaultButton_Click(object sender, EventArgs e)
         {
             SaveCurrentSettings();
 
-            DefaultSettingsHandler.CreateDefaultSettingsFile(DaysSelected, PartTimeDays);
+            HoursSettingsHandler.SaveSettings(DaysSelected, PartTimeDays, 1);
+
+            DialogResult = DialogResult.OK;
         }
 
         /*<----- Checkbox setup and formatting ----->*/
@@ -213,6 +215,8 @@ namespace MNSUHoursHelper
         private void saveButton_Click(object sender, EventArgs e)
         {
             SaveCurrentSettings();
+
+            HoursSettingsHandler.SaveSettings(DaysSelected, PartTimeDays, 0);
 
             // Send back OK result so the form data can be transfered back to home screen
             DialogResult = DialogResult.OK;
@@ -381,6 +385,15 @@ namespace MNSUHoursHelper
                 day10PartTime.Checked = false;
                 day10PartTime.Enabled = false;
             }
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            var daysHours = HoursSettingsHandler.GetDaysAndFullTime(2);
+
+            CheckUncheckBoxes(daysCheckBoxes, daysHours.Item1, partTimeCheckBoxes, daysHours.Item2);
+
+            HoursSettingsHandler.DeleteSettingsFile(1);
         }
     }
 }

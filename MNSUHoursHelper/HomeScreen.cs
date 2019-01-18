@@ -12,8 +12,6 @@ namespace MNSUHoursHelper
 {
     public partial class HomeScreen : Form
     {
-        private bool[] daysWorked = new bool[] { true, true, true, true, true, true, true, true, true, true };
-        private bool[] partTimeHours = new bool[] { true, true, true, true, true, true, true, true, true, true };
         int debugModeCount = 0;
 
         private bool fullTime = false;
@@ -39,7 +37,9 @@ namespace MNSUHoursHelper
             }
             else
             {
-                EnterHours enterHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, daysWorked, fullTime, partTimeHours);
+                var bigData = HoursSettingsHandler.GetDaysAndFullTime();
+
+                EnterHours enterHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, bigData.Item1, fullTime, bigData.Item2);
                 bool success = enterHours.Add();
 
                 if (!success)
@@ -56,13 +56,13 @@ namespace MNSUHoursHelper
         /// <param name="e"></param>
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            using (SettingsPage settingsPage = new SettingsPage(daysWorked, fullTime, partTimeHours))
+            var bigData = HoursSettingsHandler.GetDaysAndFullTime();
+
+            using (SettingsPage settingsPage = new SettingsPage(bigData.Item1, fullTime, bigData.Item2))
             {
                 if (settingsPage.ShowDialog() == DialogResult.OK)
                 {
-                    this.daysWorked = settingsPage.DaysSelected;
                     this.fullTime = settingsPage.FullTime;
-                    this.partTimeHours = settingsPage.PartTimeDays;
                 }
             }
         }
@@ -81,7 +81,9 @@ namespace MNSUHoursHelper
 
         private void deleteHoursBtn_Click(object sender, EventArgs e)
         {
-            EnterHours deleteHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, daysWorked, fullTime, partTimeHours);
+            var bigData = HoursSettingsHandler.GetDaysAndFullTime();
+
+            EnterHours deleteHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, bigData.Item1, fullTime, bigData.Item2);
             deleteHours.Delete();
         }
 
@@ -94,6 +96,11 @@ namespace MNSUHoursHelper
                 deleteHoursBtn.Show();
                 debugCredent.Show();
             }
+        }
+
+        private void HomeScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HoursSettingsHandler.DeleteSettingsFile(0);
         }
     }
 }
