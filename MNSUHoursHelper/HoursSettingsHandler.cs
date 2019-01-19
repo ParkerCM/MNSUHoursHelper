@@ -15,7 +15,7 @@ namespace MNSUHoursHelper
         /// Check if the settings folder exists
         /// </summary>
         /// <returns>True if settings directory exists. False otherwise</returns>
-        public static bool DoDefaultSettingsExist()
+        public static void DoDefaultSettingsExist()
         {
             var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
 
@@ -23,14 +23,9 @@ namespace MNSUHoursHelper
             if (Directory.Exists(settingsLocation))
             {
                 // Directory exists. See if settings file exists
-                if (File.Exists(settingsLocation + "DefaultSettings.xml"))
-                {
-                    return true;
-                }
-                else
+                if (!File.Exists(settingsLocation + "DefaultSettings.xml"))
                 {
                     CreateDefaultSettingsFile();
-                    return false;
                 }
             }
             // Directory does not exist. Create one in documents folder
@@ -38,8 +33,6 @@ namespace MNSUHoursHelper
             {
                 Directory.CreateDirectory(settingsLocation);
                 CreateDefaultSettingsFile();
-
-                return false;
             }
         }
 
@@ -158,6 +151,11 @@ namespace MNSUHoursHelper
             }
         }
 
+        /// <summary>
+        /// Gets days worked and full time from an xml. Automatically picks a file if no parameters are given
+        /// </summary>
+        /// <param name="forceSelection">0 = Session; 1 = User Default; 2 = Default</param>
+        /// <returns>A tuple with days as the first item and full time status as the second</returns>
         public static Tuple<bool[], bool[]> GetDaysAndFullTime(int forceSelection = -1)
         {
             var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
@@ -194,6 +192,11 @@ namespace MNSUHoursHelper
             return Tuple.Create(dayData, fullTimeData);
         }
 
+        /// <summary>
+        /// Converts a string to a bool
+        /// </summary>
+        /// <param name="value">String to convert</param>
+        /// <returns>A bool version of the string</returns>
         private static bool CastStringToBool(string value)
         {
             if (value == "true")

@@ -227,7 +227,7 @@ namespace MNSUHoursHelper
                 {
                     // Keep trying to get window title. Will throw an error when the window closes
                     var validator = Driver.CurrentWindowHandle;
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(100);
                 }
                 catch (Exception)
                 {
