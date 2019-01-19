@@ -37,6 +37,39 @@ namespace MNSUHoursHelper
         }
 
         /// <summary>
+        /// Creates the default settings xml
+        /// </summary>
+        private static void CreateDefaultSettingsFile()
+        {
+            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
+
+            new XDocument(new XElement("Root",
+                new XElement("Days",
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true),
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true)),
+                new XElement("FullTime",
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true),
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true))))
+                .Save(settingsLocation + "/DefaultSettings.xml");
+        }
+
+        /// <summary>
         /// Saves settings selection to xml
         /// </summary>
         /// <param name="daysWorked">Days selected</param>
@@ -71,62 +104,6 @@ namespace MNSUHoursHelper
                 new XElement("Monday", fullTime[8]),
                 new XElement("Tuesday", fullTime[9]))))
                 .Save(settingsLocation + fileNames[file]);
-        }
-
-        /// <summary>
-        /// Creates the default settings xml
-        /// </summary>
-        private static void CreateDefaultSettingsFile()
-        {
-            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
-
-            new XDocument(new XElement("Root",
-                new XElement("Days",
-                new XElement("Wednesday", true),
-                new XElement("Thursday", true),
-                new XElement("Friday", true),
-                new XElement("Monday", true),
-                new XElement("Tuesday", true),
-                new XElement("Wednesday", true),
-                new XElement("Thursday", true),
-                new XElement("Friday", true),
-                new XElement("Monday", true),
-                new XElement("Tuesday", true)),
-                new XElement("FullTime",
-                new XElement("Wednesday", true),
-                new XElement("Thursday", true),
-                new XElement("Friday", true),
-                new XElement("Monday", true),
-                new XElement("Tuesday", true),
-                new XElement("Wednesday", true),
-                new XElement("Thursday", true),
-                new XElement("Friday", true),
-                new XElement("Monday", true),
-                new XElement("Tuesday", true))))
-                .Save(settingsLocation + "/DefaultSettings.xml");
-        }
-
-        /// <summary>
-        /// Deletes the session settings file before the form is closed
-        /// </summary>
-        /// <param name="file">0 = Session Settings; 1 = User Default</param>
-        public static void DeleteSettingsFile(int file)
-        {
-            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
-
-            if (file == 0)
-            {
-                settingsLocation += "/CurrentUserSettings.xml";
-            }
-            else if (file == 1)
-            {
-                settingsLocation += "/UserDefaultSettings.xml";
-            }
-
-            if (File.Exists(settingsLocation))
-            {
-                File.Delete(settingsLocation);
-            }
         }
 
         /// <summary>
@@ -209,5 +186,27 @@ namespace MNSUHoursHelper
             }
         }
 
+        /// <summary>
+        /// Deletes the session settings file before the form is closed
+        /// </summary>
+        /// <param name="file">0 = Session Settings; 1 = User Default</param>
+        public static void DeleteSettingsFile(int file)
+        {
+            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
+
+            if (file == 0)
+            {
+                settingsLocation += "/CurrentUserSettings.xml";
+            }
+            else if (file == 1)
+            {
+                settingsLocation += "/UserDefaultSettings.xml";
+            }
+
+            if (File.Exists(settingsLocation))
+            {
+                File.Delete(settingsLocation);
+            }
+        }
     }
 }

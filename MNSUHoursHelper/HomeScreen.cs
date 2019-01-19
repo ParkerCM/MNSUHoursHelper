@@ -13,7 +13,6 @@ namespace MNSUHoursHelper
     public partial class HomeScreen : Form
     {
         int debugModeCount = 0;
-
         private bool fullTime = false;
 
         public HomeScreen()
@@ -28,7 +27,7 @@ namespace MNSUHoursHelper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void submitButton_Click(object sender, EventArgs e)
+        private void SubmitButtonClicked(object sender, EventArgs e)
         {
             // Verify username and password have been entered
             if (usernameTextBox.Text == "" || passwordTextBox.Text == "")
@@ -54,7 +53,7 @@ namespace MNSUHoursHelper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void settingsButton_Click(object sender, EventArgs e)
+        private void SettingsButtonClicked(object sender, EventArgs e)
         {
             var bigData = HoursSettingsHandler.GetDaysAndFullTime();
 
@@ -73,13 +72,18 @@ namespace MNSUHoursHelper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void debugCredent_Click(object sender, EventArgs e)
+        private void DebugCredentialsClicked(object sender, EventArgs e)
         {
             usernameTextBox.Text = "pr4715zm";
             passwordTextBox.Text = "N0rm@nD@C@t";
         }
 
-        private void deleteHoursBtn_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Deletes the hours for the provided username and password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteHoursButtonClicked(object sender, EventArgs e)
         {
             var bigData = HoursSettingsHandler.GetDaysAndFullTime();
 
@@ -87,7 +91,13 @@ namespace MNSUHoursHelper
             deleteHours.Delete();
         }
 
-        private void usernameLabel_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clicking the starid label five times will enabled debug mode
+        /// Entering this mode will unhide two buttons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UsernameLabelClicked(object sender, EventArgs e)
         {
             debugModeCount++;
 
@@ -98,7 +108,12 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void HomeScreen_FormClosing(object sender, FormClosingEventArgs e)
+        /// <summary>
+        /// Delete session settings file before closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HomeScreenFormClosing(object sender, FormClosingEventArgs e)
         {
             HoursSettingsHandler.DeleteSettingsFile(0);
         }

@@ -52,7 +52,7 @@
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "StarID";
             this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.usernameLabel.Click += new System.EventHandler(this.usernameLabel_Click);
+            this.usernameLabel.Click += new System.EventHandler(this.UsernameLabelClicked);
             // 
             // usernameTextBox
             // 
@@ -93,7 +93,7 @@
             this.submitButton.TabIndex = 4;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            this.submitButton.Click += new System.EventHandler(this.SubmitButtonClicked);
             // 
             // settingsButton
             // 
@@ -103,7 +103,7 @@
             this.settingsButton.TabIndex = 5;
             this.settingsButton.Text = "Settings";
             this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            this.settingsButton.Click += new System.EventHandler(this.SettingsButtonClicked);
             // 
             // debugCredent
             // 
@@ -113,7 +113,7 @@
             this.debugCredent.TabIndex = 6;
             this.debugCredent.Text = "Add Info";
             this.debugCredent.UseVisualStyleBackColor = true;
-            this.debugCredent.Click += new System.EventHandler(this.debugCredent_Click);
+            this.debugCredent.Click += new System.EventHandler(this.DebugCredentialsClicked);
             // 
             // deleteHoursBtn
             // 
@@ -123,7 +123,7 @@
             this.deleteHoursBtn.TabIndex = 7;
             this.deleteHoursBtn.Text = "Delete";
             this.deleteHoursBtn.UseVisualStyleBackColor = true;
-            this.deleteHoursBtn.Click += new System.EventHandler(this.deleteHoursBtn_Click);
+            this.deleteHoursBtn.Click += new System.EventHandler(this.DeleteHoursButtonClicked);
             // 
             // HomeScreen
             // 
@@ -142,7 +142,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HomeScreen";
             this.Text = "Hours Helper";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeScreen_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeScreenFormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
