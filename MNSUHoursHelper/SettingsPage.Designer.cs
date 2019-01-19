@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsPage));
             this.payPeriodLabel = new System.Windows.Forms.Label();
             this.day1Checkbox = new System.Windows.Forms.CheckBox();
             this.day2Checkbox = new System.Windows.Forms.CheckBox();
@@ -445,6 +446,7 @@
             this.Controls.Add(this.day2Checkbox);
             this.Controls.Add(this.day1Checkbox);
             this.Controls.Add(this.payPeriodLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsPage";
             this.Text = "Settings";
             this.ResumeLayout(false);
