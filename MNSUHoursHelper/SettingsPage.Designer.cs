@@ -59,6 +59,7 @@
             this.day2PartTime = new System.Windows.Forms.CheckBox();
             this.makeDefaultButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
+            this.DeleteDefault = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // payPeriodLabel
@@ -203,15 +204,15 @@
             // calendarWidget
             // 
             this.calendarWidget.AnnuallyBoldedDates = new System.DateTime[] {
-            new System.DateTime(2019, 1, 1, 0, 0, 0, 0),
-            new System.DateTime(2019, 1, 21, 0, 0, 0, 0),
-            new System.DateTime(2019, 2, 18, 0, 0, 0, 0),
-            new System.DateTime(2019, 5, 27, 0, 0, 0, 0),
-            new System.DateTime(2019, 7, 4, 0, 0, 0, 0),
-            new System.DateTime(2019, 9, 2, 0, 0, 0, 0),
-            new System.DateTime(2019, 11, 28, 0, 0, 0, 0),
-            new System.DateTime(2019, 11, 29, 0, 0, 0, 0),
-            new System.DateTime(2019, 12, 25, 0, 0, 0, 0)};
+        new System.DateTime(2019, 1, 1, 0, 0, 0, 0),
+        new System.DateTime(2019, 1, 21, 0, 0, 0, 0),
+        new System.DateTime(2019, 2, 18, 0, 0, 0, 0),
+        new System.DateTime(2019, 5, 27, 0, 0, 0, 0),
+        new System.DateTime(2019, 7, 4, 0, 0, 0, 0),
+        new System.DateTime(2019, 9, 2, 0, 0, 0, 0),
+        new System.DateTime(2019, 11, 28, 0, 0, 0, 0),
+        new System.DateTime(2019, 11, 29, 0, 0, 0, 0),
+        new System.DateTime(2019, 12, 25, 0, 0, 0, 0)};
             this.calendarWidget.BackColor = System.Drawing.SystemColors.Control;
             this.calendarWidget.CalendarDimensions = new System.Drawing.Size(1, 2);
             this.calendarWidget.Location = new System.Drawing.Point(188, 38);
@@ -231,7 +232,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(25, 401);
+            this.saveButton.Location = new System.Drawing.Point(37, 401);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(80, 38);
             this.saveButton.TabIndex = 15;
@@ -241,7 +242,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(129, 401);
+            this.cancelButton.Location = new System.Drawing.Point(137, 401);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(80, 38);
             this.cancelButton.TabIndex = 16;
@@ -393,7 +394,7 @@
             // 
             // makeDefaultButton
             // 
-            this.makeDefaultButton.Location = new System.Drawing.Point(236, 401);
+            this.makeDefaultButton.Location = new System.Drawing.Point(237, 401);
             this.makeDefaultButton.Name = "makeDefaultButton";
             this.makeDefaultButton.Size = new System.Drawing.Size(80, 38);
             this.makeDefaultButton.TabIndex = 31;
@@ -403,7 +404,7 @@
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(342, 401);
+            this.resetButton.Location = new System.Drawing.Point(37, 345);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(80, 38);
             this.resetButton.TabIndex = 32;
@@ -411,11 +412,22 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.ResetButtonClicked);
             // 
+            // DeleteDefault
+            // 
+            this.DeleteDefault.Location = new System.Drawing.Point(337, 401);
+            this.DeleteDefault.Name = "DeleteDefault";
+            this.DeleteDefault.Size = new System.Drawing.Size(80, 38);
+            this.DeleteDefault.TabIndex = 33;
+            this.DeleteDefault.Text = "Delete Saved Default";
+            this.DeleteDefault.UseVisualStyleBackColor = true;
+            this.DeleteDefault.Click += new System.EventHandler(this.DeleteDefaultButtonClicked);
+            // 
             // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 451);
+            this.Controls.Add(this.DeleteDefault);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.makeDefaultButton);
             this.Controls.Add(this.day2PartTime);
@@ -485,5 +497,6 @@
         private System.Windows.Forms.CheckBox day2PartTime;
         private System.Windows.Forms.Button makeDefaultButton;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button DeleteDefault;
     }
 }

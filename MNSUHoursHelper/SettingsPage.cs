@@ -395,7 +395,10 @@ namespace MNSUHoursHelper
             var daysHours = HoursSettingsHandler.GetDaysAndFullTime(2);
 
             CheckUncheckBoxes(daysCheckBoxes, daysHours.Item1, partTimeCheckBoxes, daysHours.Item2);
+        }
 
+        private void DeleteDefaultButtonClicked(object sender, EventArgs e)
+        {
             HoursSettingsHandler.DeleteSettingsFile(1);
         }
     }
