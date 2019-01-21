@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsPage));
             this.payPeriodLabel = new System.Windows.Forms.Label();
             this.day1Checkbox = new System.Windows.Forms.CheckBox();
             this.day2Checkbox = new System.Windows.Forms.CheckBox();
@@ -58,6 +59,7 @@
             this.day2PartTime = new System.Windows.Forms.CheckBox();
             this.makeDefaultButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
+            this.DeleteDefault = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // payPeriodLabel
@@ -80,7 +82,7 @@
             this.day1Checkbox.TabIndex = 3;
             this.day1Checkbox.Text = "Wednesday";
             this.day1Checkbox.UseVisualStyleBackColor = true;
-            this.day1Checkbox.CheckedChanged += new System.EventHandler(this.day1Checkbox_CheckedChanged);
+            this.day1Checkbox.CheckedChanged += new System.EventHandler(this.Day1CheckboxStateChanged);
             // 
             // day2Checkbox
             // 
@@ -93,7 +95,7 @@
             this.day2Checkbox.TabIndex = 4;
             this.day2Checkbox.Text = "Thursday";
             this.day2Checkbox.UseVisualStyleBackColor = true;
-            this.day2Checkbox.CheckedChanged += new System.EventHandler(this.day2Checkbox_CheckedChanged);
+            this.day2Checkbox.CheckedChanged += new System.EventHandler(this.Day2CheckboxStateChanged);
             // 
             // day3Checkbox
             // 
@@ -106,7 +108,7 @@
             this.day3Checkbox.TabIndex = 5;
             this.day3Checkbox.Text = "Friday";
             this.day3Checkbox.UseVisualStyleBackColor = true;
-            this.day3Checkbox.CheckedChanged += new System.EventHandler(this.day3Checkbox_CheckedChanged);
+            this.day3Checkbox.CheckedChanged += new System.EventHandler(this.Day3CheckboxStateChanged);
             // 
             // day4Checkbox
             // 
@@ -119,7 +121,7 @@
             this.day4Checkbox.TabIndex = 6;
             this.day4Checkbox.Text = "Monday";
             this.day4Checkbox.UseVisualStyleBackColor = true;
-            this.day4Checkbox.CheckedChanged += new System.EventHandler(this.day4Checkbox_CheckedChanged);
+            this.day4Checkbox.CheckedChanged += new System.EventHandler(this.Day4CheckboxStateChanged);
             // 
             // day5Checkbox
             // 
@@ -132,7 +134,7 @@
             this.day5Checkbox.TabIndex = 7;
             this.day5Checkbox.Text = "Tuesday";
             this.day5Checkbox.UseVisualStyleBackColor = true;
-            this.day5Checkbox.CheckedChanged += new System.EventHandler(this.day5Checkbox_CheckedChanged);
+            this.day5Checkbox.CheckedChanged += new System.EventHandler(this.Day5CheckboxStateChanged);
             // 
             // day6Checkbox
             // 
@@ -145,7 +147,7 @@
             this.day6Checkbox.TabIndex = 8;
             this.day6Checkbox.Text = "Wednesday";
             this.day6Checkbox.UseVisualStyleBackColor = true;
-            this.day6Checkbox.CheckedChanged += new System.EventHandler(this.day6Checkbox_CheckedChanged);
+            this.day6Checkbox.CheckedChanged += new System.EventHandler(this.Day6CheckboxStateChanged);
             // 
             // day7Checkbox
             // 
@@ -158,7 +160,7 @@
             this.day7Checkbox.TabIndex = 9;
             this.day7Checkbox.Text = "Thursday";
             this.day7Checkbox.UseVisualStyleBackColor = true;
-            this.day7Checkbox.CheckedChanged += new System.EventHandler(this.day7Checkbox_CheckedChanged);
+            this.day7Checkbox.CheckedChanged += new System.EventHandler(this.Day7CheckboxStateChanged);
             // 
             // day8Checkbox
             // 
@@ -171,7 +173,7 @@
             this.day8Checkbox.TabIndex = 10;
             this.day8Checkbox.Text = "Friday";
             this.day8Checkbox.UseVisualStyleBackColor = true;
-            this.day8Checkbox.CheckedChanged += new System.EventHandler(this.day8Checkbox_CheckedChanged);
+            this.day8Checkbox.CheckedChanged += new System.EventHandler(this.Day8CheckboxStateChanged);
             // 
             // day9Checkbox
             // 
@@ -184,7 +186,7 @@
             this.day9Checkbox.TabIndex = 11;
             this.day9Checkbox.Text = "Monday";
             this.day9Checkbox.UseVisualStyleBackColor = true;
-            this.day9Checkbox.CheckedChanged += new System.EventHandler(this.day9Checkbox_CheckedChanged);
+            this.day9Checkbox.CheckedChanged += new System.EventHandler(this.Day9CheckboxStateChanged);
             // 
             // day10Checkbox
             // 
@@ -197,7 +199,7 @@
             this.day10Checkbox.TabIndex = 12;
             this.day10Checkbox.Text = "Tuesday";
             this.day10Checkbox.UseVisualStyleBackColor = true;
-            this.day10Checkbox.CheckedChanged += new System.EventHandler(this.day10Checkbox_CheckedChanged);
+            this.day10Checkbox.CheckedChanged += new System.EventHandler(this.Day10CheckboxStateChanged);
             // 
             // calendarWidget
             // 
@@ -230,23 +232,23 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(25, 401);
+            this.saveButton.Location = new System.Drawing.Point(37, 401);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(80, 38);
             this.saveButton.TabIndex = 15;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.saveButton.Click += new System.EventHandler(this.SaveButtonClicked);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(129, 401);
+            this.cancelButton.Location = new System.Drawing.Point(137, 401);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(80, 38);
             this.cancelButton.TabIndex = 16;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClicked);
             // 
             // fullTimeRadio
             // 
@@ -269,7 +271,7 @@
             this.partTimeRadio.TabStop = true;
             this.partTimeRadio.Text = "Part Time";
             this.partTimeRadio.UseVisualStyleBackColor = true;
-            this.partTimeRadio.CheckedChanged += new System.EventHandler(this.partTimeRadio_CheckedChanged);
+            this.partTimeRadio.CheckedChanged += new System.EventHandler(this.PartTimeRadioStateChanged);
             // 
             // day1PartTime
             // 
@@ -392,29 +394,40 @@
             // 
             // makeDefaultButton
             // 
-            this.makeDefaultButton.Location = new System.Drawing.Point(236, 401);
+            this.makeDefaultButton.Location = new System.Drawing.Point(237, 401);
             this.makeDefaultButton.Name = "makeDefaultButton";
             this.makeDefaultButton.Size = new System.Drawing.Size(80, 38);
             this.makeDefaultButton.TabIndex = 31;
             this.makeDefaultButton.Text = "Make Default and Save";
             this.makeDefaultButton.UseVisualStyleBackColor = true;
-            this.makeDefaultButton.Click += new System.EventHandler(this.makeDefaultButton_Click);
+            this.makeDefaultButton.Click += new System.EventHandler(this.MakeDefaultButtonClicked);
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(342, 401);
+            this.resetButton.Location = new System.Drawing.Point(37, 345);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(80, 38);
             this.resetButton.TabIndex = 32;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            this.resetButton.Click += new System.EventHandler(this.ResetButtonClicked);
+            // 
+            // DeleteDefault
+            // 
+            this.DeleteDefault.Location = new System.Drawing.Point(337, 401);
+            this.DeleteDefault.Name = "DeleteDefault";
+            this.DeleteDefault.Size = new System.Drawing.Size(80, 38);
+            this.DeleteDefault.TabIndex = 33;
+            this.DeleteDefault.Text = "Delete Saved Default";
+            this.DeleteDefault.UseVisualStyleBackColor = true;
+            this.DeleteDefault.Click += new System.EventHandler(this.DeleteDefaultButtonClicked);
             // 
             // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 451);
+            this.Controls.Add(this.DeleteDefault);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.makeDefaultButton);
             this.Controls.Add(this.day2PartTime);
@@ -445,6 +458,7 @@
             this.Controls.Add(this.day2Checkbox);
             this.Controls.Add(this.day1Checkbox);
             this.Controls.Add(this.payPeriodLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsPage";
             this.Text = "Settings";
             this.ResumeLayout(false);
@@ -483,5 +497,6 @@
         private System.Windows.Forms.CheckBox day2PartTime;
         private System.Windows.Forms.Button makeDefaultButton;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button DeleteDefault;
     }
 }

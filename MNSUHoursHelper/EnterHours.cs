@@ -11,11 +11,11 @@ namespace MNSUHoursHelper
     class EnterHours
     {
         // Variables for use within this class
-        private String username;
-        private String password;
+        private readonly String username;
+        private readonly String password;
         private IWebDriver Driver;
-        private bool[] daysWorked = new bool[10];
-        private bool[] partTimeHours = new bool[10];
+        private readonly bool[] daysWorked = new bool[10];
+        private readonly bool[] partTimeHours = new bool[10];
         private readonly bool fullTime;
 
         // Log in screen
@@ -104,13 +104,18 @@ namespace MNSUHoursHelper
             return true;
         }
 
+        /// <summary>
+        /// Creates driver object and goes to eservices log in page
+        /// </summary>
         private void InitializeBrowser()
         {
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
 
-            ChromeOptions options = new ChromeOptions();
-            options.LeaveBrowserRunning = true;
+            ChromeOptions options = new ChromeOptions
+            {
+                LeaveBrowserRunning = true
+            };
             options.AddArgument("--incognito");
 
             Driver = new ChromeDriver(chromeDriverService, options);
@@ -227,14 +232,13 @@ namespace MNSUHoursHelper
                 {
                     // Keep trying to get window title. Will throw an error when the window closes
                     var validator = Driver.CurrentWindowHandle;
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(100);
                 }
                 catch (Exception)
                 {
                     break;
                 }
             }
-
             Driver.Dispose();
         }
     }

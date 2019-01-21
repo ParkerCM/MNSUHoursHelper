@@ -12,15 +12,15 @@ namespace MNSUHoursHelper
 {
     public partial class SettingsPage : Form
     {
+        // Private variables
         private DateTime startOfPayPeriod;
         private DateTime endOfPayPeriod;
         private CheckBox[] daysCheckBoxes = new CheckBox[10];
         private CheckBox[] partTimeCheckBoxes = new CheckBox[10];
 
+        // Public variables
         public bool[] DaysSelected { get; set; } = new bool[10];
-
         public bool[] PartTimeDays { get; set; } = new bool[10];
-
         public bool FullTime
         {
             get { return fullTimeRadio.Checked; }
@@ -70,6 +70,9 @@ namespace MNSUHoursHelper
             calendarWidget.SelectionEnd = this.endOfPayPeriod;
         }
 
+        /// <summary>
+        /// Gets the current state of all checkboxes and saves them to an array
+        /// </summary>
         private void SaveCurrentSettings()
         {
             for (int index = 0; index < daysCheckBoxes.Length; index++)
@@ -94,10 +97,14 @@ namespace MNSUHoursHelper
                     PartTimeDays[index] = true;
                 }
             }
-
         }
 
-        private void makeDefaultButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Gets the current state of all checkboxes and saves that information to an xml file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MakeDefaultButtonClicked(object sender, EventArgs e)
         {
             SaveCurrentSettings();
 
@@ -105,8 +112,6 @@ namespace MNSUHoursHelper
 
             DialogResult = DialogResult.OK;
         }
-
-        /*<----- Checkbox setup and formatting ----->*/
 
         /// <summary>
         /// Loads saved checkbox settings and applies them to the page by enabling/disabling the boxes.
@@ -205,14 +210,12 @@ namespace MNSUHoursHelper
             return boxes;
         }
 
-        /*<----- Button Actions ----->*/
-
         /// <summary>
         /// Logic for clicking the save button. Selected days of the week are saved and sent to the home screen.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void saveButton_Click(object sender, EventArgs e)
+        private void SaveButtonClicked(object sender, EventArgs e)
         {
             SaveCurrentSettings();
 
@@ -227,7 +230,7 @@ namespace MNSUHoursHelper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButtonClicked(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -235,7 +238,7 @@ namespace MNSUHoursHelper
         /// <summary>
         /// Checks all part time boxes if part time is selected. Deselects when full time is selected
         /// </summary>
-        private void partTimeRadio_CheckedChanged(object sender, EventArgs e)
+        private void PartTimeRadioStateChanged(object sender, EventArgs e)
         {
             if (partTimeRadio.Checked)
             {
@@ -257,7 +260,7 @@ namespace MNSUHoursHelper
         // If the box is unchecked, then the part time box will become unchecked and disabled
         // If the box is checked, then the part time box will become enabled
 
-        private void day1Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day1CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day1Checkbox.Checked)
             {
@@ -270,7 +273,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day2Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day2CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day2Checkbox.Checked)
             {
@@ -283,7 +286,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day3Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day3CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day3Checkbox.Checked)
             {
@@ -296,7 +299,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day4Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day4CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day4Checkbox.Checked)
             {
@@ -309,7 +312,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day5Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day5CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day5Checkbox.Checked)
             {
@@ -322,7 +325,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day6Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day6CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day6Checkbox.Checked)
             {
@@ -335,7 +338,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day7Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day7CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day7Checkbox.Checked)
             {
@@ -348,7 +351,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day8Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day8CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day8Checkbox.Checked)
             {
@@ -361,7 +364,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day9Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day9CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day9Checkbox.Checked)
             {
@@ -374,7 +377,7 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void day10Checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Day10CheckboxStateChanged(object sender, EventArgs e)
         {
             if (day10Checkbox.Checked)
             {
@@ -387,12 +390,15 @@ namespace MNSUHoursHelper
             }
         }
 
-        private void resetButton_Click(object sender, EventArgs e)
+        private void ResetButtonClicked(object sender, EventArgs e)
         {
             var daysHours = HoursSettingsHandler.GetDaysAndFullTime(2);
 
             CheckUncheckBoxes(daysCheckBoxes, daysHours.Item1, partTimeCheckBoxes, daysHours.Item2);
+        }
 
+        private void DeleteDefaultButtonClicked(object sender, EventArgs e)
+        {
             HoursSettingsHandler.DeleteSettingsFile(1);
         }
     }

@@ -15,7 +15,7 @@ namespace MNSUHoursHelper
         /// Check if the settings folder exists
         /// </summary>
         /// <returns>True if settings directory exists. False otherwise</returns>
-        public static bool DoDefaultSettingsExist()
+        public static void DoDefaultSettingsExist()
         {
             var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
 
@@ -23,14 +23,9 @@ namespace MNSUHoursHelper
             if (Directory.Exists(settingsLocation))
             {
                 // Directory exists. See if settings file exists
-                if (File.Exists(settingsLocation + "DefaultSettings.xml"))
-                {
-                    return true;
-                }
-                else
+                if (!File.Exists(settingsLocation + "DefaultSettings.xml"))
                 {
                     CreateDefaultSettingsFile();
-                    return false;
                 }
             }
             // Directory does not exist. Create one in documents folder
@@ -38,9 +33,40 @@ namespace MNSUHoursHelper
             {
                 Directory.CreateDirectory(settingsLocation);
                 CreateDefaultSettingsFile();
-
-                return false;
             }
+        }
+
+        /// <summary>
+        /// Creates the default settings xml
+        /// </summary>
+        private static void CreateDefaultSettingsFile()
+        {
+            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
+
+            new XDocument(new XElement("Root",
+                new XElement("Days",
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true),
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true)),
+                new XElement("FullTime",
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true),
+                new XElement("Wednesday", true),
+                new XElement("Thursday", true),
+                new XElement("Friday", true),
+                new XElement("Monday", true),
+                new XElement("Tuesday", true))))
+                .Save(settingsLocation + "/DefaultSettings.xml");
         }
 
         /// <summary>
@@ -81,62 +107,6 @@ namespace MNSUHoursHelper
         }
 
         /// <summary>
-        /// Creates the default settings xml
-        /// </summary>
-        private static void CreateDefaultSettingsFile()
-        {
-            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
-
-            new XDocument(new XElement("Root",
-                new XElement("Days",
-                new XElement("Wednesday", true),
-                new XElement("Thursday", true),
-                new XElement("Friday", true),
-                new XElement("Monday", true),
-                new XElement("Tuesday", true),
-                new XElement("Wednesday", true),
-                new XElement("Thursday", true),
-                new XElement("Friday", true),
-                new XElement("Monday", true),
-                new XElement("Tuesday", true)),
-                new XElement("FullTime",
-                new XElement("Wednesday", true),
-                new XElement("Thursday", true),
-                new XElement("Friday", true),
-                new XElement("Monday", true),
-                new XElement("Tuesday", true),
-                new XElement("Wednesday", true),
-                new XElement("Thursday", true),
-                new XElement("Friday", true),
-                new XElement("Monday", true),
-                new XElement("Tuesday", true))))
-                .Save(settingsLocation + "/DefaultSettings.xml");
-        }
-
-        /// <summary>
-        /// Deletes the session settings file before the form is closed
-        /// </summary>
-        /// <param name="file">0 = Session Settings; 1 = User Default</param>
-        public static void DeleteSettingsFile(int file)
-        {
-            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
-
-            if (file == 0)
-            {
-                settingsLocation += "/CurrentUserSettings.xml";
-            }
-            else if (file == 1)
-            {
-                settingsLocation += "/UserDefaultSettings.xml";
-            }
-
-            if (File.Exists(settingsLocation))
-            {
-                File.Delete(settingsLocation);
-            }
-        }
-
-        /// <summary>
         /// Determines which settings should be loaded
         /// </summary>
         /// <returns>0 = Session Settings; 1 = User Default; 2 = Program Default</returns>
@@ -158,6 +128,11 @@ namespace MNSUHoursHelper
             }
         }
 
+        /// <summary>
+        /// Gets days worked and full time from an xml. Automatically picks a file if no parameters are given
+        /// </summary>
+        /// <param name="forceSelection">0 = Session; 1 = User Default; 2 = Default</param>
+        /// <returns>A tuple with days as the first item and full time status as the second</returns>
         public static Tuple<bool[], bool[]> GetDaysAndFullTime(int forceSelection = -1)
         {
             var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
@@ -194,6 +169,11 @@ namespace MNSUHoursHelper
             return Tuple.Create(dayData, fullTimeData);
         }
 
+        /// <summary>
+        /// Converts a string to a bool
+        /// </summary>
+        /// <param name="value">String to convert</param>
+        /// <returns>A bool version of the string</returns>
         private static bool CastStringToBool(string value)
         {
             if (value == "true")
@@ -206,5 +186,27 @@ namespace MNSUHoursHelper
             }
         }
 
+        /// <summary>
+        /// Deletes the session settings file before the form is closed
+        /// </summary>
+        /// <param name="file">0 = Session Settings; 1 = User Default</param>
+        public static void DeleteSettingsFile(int file)
+        {
+            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
+
+            if (file == 0)
+            {
+                settingsLocation += "/CurrentUserSettings.xml";
+            }
+            else if (file == 1)
+            {
+                settingsLocation += "/UserDefaultSettings.xml";
+            }
+
+            if (File.Exists(settingsLocation))
+            {
+                File.Delete(settingsLocation);
+            }
+        }
     }
 }
