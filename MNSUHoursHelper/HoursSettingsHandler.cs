@@ -11,30 +11,10 @@ namespace MNSUHoursHelper
 {
     public static class HoursSettingsHandler
     {
-        /// <summary>
-        /// Check if the settings folder exists
-        /// </summary>
-        /// <returns>True if settings directory exists. False otherwise</returns>
-        public static void DoDefaultSettingsExist()
-        {
-            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
 
-            // Check if settings directory exists
-            if (Directory.Exists(settingsLocation))
-            {
-                // Directory exists. See if settings file exists
-                if (!File.Exists(settingsLocation + "DefaultSettings.xml"))
-                {
-                    CreateDefaultSettingsFile();
-                }
-            }
-            // Directory does not exist. Create one in documents folder
-            else
-            {
-                Directory.CreateDirectory(settingsLocation);
-                CreateDefaultSettingsFile();
-            }
-        }
+        ///////////////////////////////////////////////////////////
+        /// Private Methods                                     ///
+        ///////////////////////////////////////////////////////////
 
         /// <summary>
         /// Creates the default settings xml
@@ -75,7 +55,7 @@ namespace MNSUHoursHelper
         /// <param name="daysWorked">Days selected</param>
         /// <param name="fullTime">Is the user working full time</param>
         /// <param name="file">0 = Session Settings; 1 = User Default</param>
-        public static void SaveSettings(bool[] daysWorked, bool[] fullTime, int file)
+        private static void SaveSettings(bool[] daysWorked, bool[] fullTime, int file)
         {
             var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
             string[] fileNames = new string[] { "/CurrentUserSettings.xml", "/UserDefaultSettings.xml" };
@@ -129,6 +109,75 @@ namespace MNSUHoursHelper
         }
 
         /// <summary>
+        /// Converts a string to a bool
+        /// </summary>
+        /// <param name="value">String to convert</param>
+        /// <returns>A bool version of the string</returns>
+        private static bool CastStringToBool(string value)
+        {
+            if (value == "true")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Deletes the session or user default settings file
+        /// </summary>
+        /// <param name="file">0 = Session Settings; 1 = User Default</param>
+        private static void DeleteSettingsFile(int file)
+        {
+            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
+
+            if (file == 0)
+            {
+                settingsLocation += "/CurrentUserSettings.xml";
+            }
+            else if (file == 1)
+            {
+                settingsLocation += "/UserDefaultSettings.xml";
+            }
+
+            if (File.Exists(settingsLocation))
+            {
+                File.Delete(settingsLocation);
+            }
+        }
+
+        ///////////////////////////////////////////////////////////
+        /// Public Methods                                      ///
+        ///////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Check if the settings folder exists
+        /// </summary>
+        /// <returns>True if settings directory exists. False otherwise</returns>
+        public static void DoDefaultSettingsExist()
+        {
+            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
+
+            // Check if settings directory exists
+            if (Directory.Exists(settingsLocation))
+            {
+                // Directory exists. See if settings file exists
+                if (!File.Exists(settingsLocation + "DefaultSettings.xml"))
+                {
+                    CreateDefaultSettingsFile();
+                }
+            }
+            // Directory does not exist. Create one in documents folder
+            else
+            {
+                Directory.CreateDirectory(settingsLocation);
+                CreateDefaultSettingsFile();
+            }
+        }
+
+        /// <summary>
         /// Gets days worked and full time from an xml. Automatically picks a file if no parameters are given
         /// </summary>
         /// <param name="forceSelection">0 = Session; 1 = User Default; 2 = Default</param>
@@ -136,7 +185,7 @@ namespace MNSUHoursHelper
         public static Tuple<bool[], bool[]> GetDaysAndFullTime(int forceSelection = -1)
         {
             var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
-            String[] choices = new String[] { "/CurrentUserSettings.xml", "/UserDefaultSettings.xml", "/DefaultSettings.xml"};
+            String[] choices = new String[] { "/CurrentUserSettings.xml", "/UserDefaultSettings.xml", "/DefaultSettings.xml" };
             int choice;
 
             if (forceSelection == -1)
@@ -159,7 +208,7 @@ namespace MNSUHoursHelper
             XmlNodeList fullTime = doc.GetElementsByTagName("FullTime");
             XmlNodeList dayNodes = days[0].ChildNodes;
             XmlNodeList fullTimeNodes = fullTime[0].ChildNodes;
-            
+
             for (int index = 0; index < 10; index++)
             {
                 dayData[index] = CastStringToBool(dayNodes[index].InnerText);
@@ -170,43 +219,39 @@ namespace MNSUHoursHelper
         }
 
         /// <summary>
-        /// Converts a string to a bool
+        /// Delete the user's default settings file
         /// </summary>
-        /// <param name="value">String to convert</param>
-        /// <returns>A bool version of the string</returns>
-        private static bool CastStringToBool(string value)
+        public static void DeleteUserDefaultSettingsFile()
         {
-            if (value == "true")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            DeleteSettingsFile(1);
         }
 
         /// <summary>
-        /// Deletes the session settings file before the form is closed
+        /// Deletes the users current session settings file
         /// </summary>
-        /// <param name="file">0 = Session Settings; 1 = User Default</param>
-        public static void DeleteSettingsFile(int file)
+        public static void DeleteSessionSettingsFile()
         {
-            var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
+            DeleteSettingsFile(0);
+        }
 
-            if (file == 0)
-            {
-                settingsLocation += "/CurrentUserSettings.xml";
-            }
-            else if (file == 1)
-            {
-                settingsLocation += "/UserDefaultSettings.xml";
-            }
+        /// <summary>
+        /// Saves user default settings to the xml file
+        /// </summary>
+        /// <param name="daysWorked">Days which have been worked in a bool array</param>
+        /// <param name="fullTime">Whether the day was full time or part time in a bool array</param>
+        public static void SaveUserDefaultSettings(bool[] daysWorked, bool[] fullTime)
+        {
+            SaveSettings(daysWorked, fullTime, 1);
+        }
 
-            if (File.Exists(settingsLocation))
-            {
-                File.Delete(settingsLocation);
-            }
+        /// <summary>
+        /// Saves session settings to the xml file
+        /// </summary>
+        /// <param name="daysWorked">Days which have been worked in a bool array</param>
+        /// <param name="fullTime">Whether the day was full time or part time in a bool array</param>
+        public static void SaveSessionSettings(bool[] daysWorked, bool[] fullTime)
+        {
+            SaveSettings(daysWorked, fullTime, 0);
         }
     }
 }

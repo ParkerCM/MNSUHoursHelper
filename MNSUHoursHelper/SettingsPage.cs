@@ -108,7 +108,7 @@ namespace MNSUHoursHelper
         {
             SaveCurrentSettings();
 
-            HoursSettingsHandler.SaveSettings(DaysSelected, PartTimeDays, 1);
+            HoursSettingsHandler.SaveUserDefaultSettings(DaysSelected, PartTimeDays);
 
             DialogResult = DialogResult.OK;
         }
@@ -219,7 +219,7 @@ namespace MNSUHoursHelper
         {
             SaveCurrentSettings();
 
-            HoursSettingsHandler.SaveSettings(DaysSelected, PartTimeDays, 0);
+            HoursSettingsHandler.SaveSessionSettings(DaysSelected, PartTimeDays);
 
             // Send back OK result so the form data can be transfered back to home screen
             DialogResult = DialogResult.OK;
@@ -390,16 +390,23 @@ namespace MNSUHoursHelper
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetButtonClicked(object sender, EventArgs e)
         {
             var daysHours = HoursSettingsHandler.GetDaysAndFullTime(2);
 
             CheckUncheckBoxes(daysCheckBoxes, daysHours.Item1, partTimeCheckBoxes, daysHours.Item2);
+
+            partTimeRadio.Checked = true;
         }
 
         private void DeleteDefaultButtonClicked(object sender, EventArgs e)
         {
-            HoursSettingsHandler.DeleteSettingsFile(1);
+            HoursSettingsHandler.DeleteUserDefaultSettingsFile();
         }
     }
 }

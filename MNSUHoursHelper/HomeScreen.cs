@@ -115,7 +115,7 @@ namespace MNSUHoursHelper
         /// <param name="e"></param>
         private void HomeScreenFormClosing(object sender, FormClosingEventArgs e)
         {
-            HoursSettingsHandler.DeleteSettingsFile(0);
+            HoursSettingsHandler.DeleteSessionSettingsFile();
         }
     }
 }
