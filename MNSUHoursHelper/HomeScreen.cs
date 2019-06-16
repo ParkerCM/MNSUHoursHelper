@@ -38,7 +38,7 @@ namespace MNSUHoursHelper
             {
                 var bigData = HoursSettingsHandler.GetDaysAndFullTime();
 
-                EnterHours enterHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, bigData.Item1, fullTime, bigData.Item2);
+                EnterHours enterHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, bigData.Item1, bigData.Item2);
                 bool success = enterHours.Add();
 
                 if (!success)
@@ -57,7 +57,7 @@ namespace MNSUHoursHelper
         {
             var bigData = HoursSettingsHandler.GetDaysAndFullTime();
 
-            using (SettingsPage settingsPage = new SettingsPage(bigData.Item1, fullTime, bigData.Item2))
+            using (SettingsPage settingsPage = new SettingsPage(bigData.Item1, bigData.Item3, bigData.Item2))
             {
                 if (settingsPage.ShowDialog() == DialogResult.OK)
                 {
@@ -87,7 +87,7 @@ namespace MNSUHoursHelper
         {
             var bigData = HoursSettingsHandler.GetDaysAndFullTime();
 
-            EnterHours deleteHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, bigData.Item1, fullTime, bigData.Item2);
+            EnterHours deleteHours = new EnterHours(usernameTextBox.Text, passwordTextBox.Text, bigData.Item1, bigData.Item2);
             deleteHours.Delete();
         }
 

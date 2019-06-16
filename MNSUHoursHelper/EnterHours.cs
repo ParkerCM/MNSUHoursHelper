@@ -16,7 +16,6 @@ namespace MNSUHoursHelper
         private IWebDriver Driver;
         private readonly bool[] daysWorked = new bool[10];
         private readonly bool[] partTimeHours = new bool[10];
-        private readonly bool fullTime;
 
         // Log in screen
         private readonly String usernameField = "//*[@id='techid']";
@@ -45,13 +44,11 @@ namespace MNSUHoursHelper
         /// <param name="username">StarID for user</param>
         /// <param name="password">Password for user</param>
         /// <param name="daysWorked">Dictionary of the days they worked this pay period</param>
-        /// <param name="fullTime">Did they work 8 hours?</param>
-        public EnterHours(String username, String password, bool[] daysWorked, bool fullTime, bool[] partTimeHours)
+        public EnterHours(String username, String password, bool[] daysWorked, bool[] partTimeHours)
         {
             this.username = username;
             this.password = password;
             this.daysWorked = daysWorked;
-            this.fullTime = fullTime;
             this.partTimeHours = partTimeHours;
         }
 

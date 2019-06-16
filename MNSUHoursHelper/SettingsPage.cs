@@ -30,13 +30,14 @@ namespace MNSUHoursHelper
         public SettingsPage(bool[] daysWorked, bool fullTime, bool[] partTimeHours)
         {
             InitializeComponent();
+            
+            daysCheckBoxes = SetUpCheckboxArray(daysCheckBoxes);
+            partTimeCheckBoxes = SetUpHoursCheckboxArray(partTimeCheckBoxes);
 
             DaysSelected = daysWorked;
             FullTime = fullTime;
             PartTimeDays = partTimeHours;
-            
-            daysCheckBoxes = SetUpCheckboxArray(daysCheckBoxes);
-            partTimeCheckBoxes = SetUpHoursCheckboxArray(partTimeCheckBoxes);
+
             CheckUncheckBoxes(daysCheckBoxes, DaysSelected, partTimeCheckBoxes, PartTimeDays);
             SetCurrentPayPeriod();
             AddDateToCheckboxes(daysCheckBoxes, startOfPayPeriod);

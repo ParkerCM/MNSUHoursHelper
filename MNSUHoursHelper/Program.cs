@@ -17,6 +17,7 @@ namespace MNSUHoursHelper
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             HoursSettingsHandler.DoDefaultSettingsExist();
+            HoursSettingsHandler.DeleteSessionSettingsFile();
             Application.Run(new HomeScreen());
         }
     }

@@ -182,7 +182,7 @@ namespace MNSUHoursHelper
         /// </summary>
         /// <param name="forceSelection">0 = Session; 1 = User Default; 2 = Default</param>
         /// <returns>A tuple with days as the first item and full time status as the second</returns>
-        public static Tuple<bool[], bool[]> GetDaysAndFullTime(int forceSelection = -1)
+        public static Tuple<bool[], bool[], bool> GetDaysAndFullTime(int forceSelection = -1)
         {
             var settingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/MNSUHoursHelperSettings";
             String[] choices = new String[] { "/CurrentUserSettings.xml", "/UserDefaultSettings.xml", "/DefaultSettings.xml" };
@@ -215,7 +215,17 @@ namespace MNSUHoursHelper
                 fullTimeData[index] = CastStringToBool(fullTimeNodes[index].InnerText);
             }
 
-            return Tuple.Create(dayData, fullTimeData);
+            bool userFullTime = true;
+            foreach (bool isFullTime in fullTimeData)
+            {
+                if (isFullTime)
+                {
+                    userFullTime = false;
+                    break;
+                }
+            }
+
+            return Tuple.Create(dayData, fullTimeData, userFullTime);
         }
 
         /// <summary>
